@@ -196,103 +196,107 @@
       color: var(--gray-400); letter-spacing: 0.01em;
     }
 
-    /* Day-grouped grid */
-    .events-days-grid {
+    /* ── Horizontal week calendar ── */
+    .cal-week-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      align-items: start;
+      grid-template-columns: repeat(7, minmax(128px, 1fr));
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
     }
 
-    /* One day block */
-    .day-block {
+    /* One day column */
+    .cal-col {
+      display: flex;
+      flex-direction: column;
       background: var(--surface);
       border: 1px solid var(--gray-200);
       border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
       overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      min-height: 160px;
     }
-    .day-block.is-today {
+    .cal-col.is-today {
       border-color: var(--green-200);
       box-shadow: var(--shadow-sm), 0 0 0 3px rgba(28,122,66,0.08);
     }
 
-    /* Day block header */
-    .day-block-head {
-      display: flex; align-items: center; gap: 12px;
-      padding: 12px 16px;
+    /* Column header */
+    .cal-col-head {
+      display: flex; flex-direction: column;
+      align-items: center; padding: 14px 6px 13px; gap: 2px; flex-shrink: 0;
+    }
+    .cal-col.has-events .cal-col-head { background: var(--green-900); }
+    .cal-col.is-today   .cal-col-head { background: var(--green-700); }
+    .cal-col.is-empty   .cal-col-head {
       background: var(--gray-100);
       border-bottom: 1px solid var(--gray-200);
     }
-    .day-block.is-today .day-block-head {
-      background: var(--green-50);
-      border-bottom-color: var(--green-100);
+
+    .cal-dow {
+      font-size: 8.5px; font-weight: 800;
+      letter-spacing: 0.2em; text-transform: uppercase;
+    }
+    .cal-col.has-events .cal-dow { color: var(--green-400); }
+    .cal-col.is-empty   .cal-dow { color: var(--gray-400); }
+
+    .cal-day-num {
+      font-family: var(--font-serif);
+      font-size: 30px; font-weight: 700; line-height: 1;
+    }
+    .cal-col.has-events .cal-day-num { color: #fff; }
+    .cal-col.is-empty   .cal-day-num { color: var(--gray-400); }
+
+    .cal-month-lbl {
+      font-size: 8px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .cal-col.has-events .cal-month-lbl { color: rgba(255,255,255,0.35); }
+    .cal-col.is-empty   .cal-month-lbl { color: var(--gray-400); }
+
+    .cal-today-badge {
+      margin-top: 5px;
+      font-size: 7px; font-weight: 900; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--amber-400);
+      background: rgba(232,168,26,0.18);
+      border: 1px solid rgba(232,168,26,0.35);
+      border-radius: 20px; padding: 2px 7px;
     }
 
-    /* Date chip inside the header */
-    .day-date-chip {
-      display: flex; flex-direction: column; align-items: center;
-      justify-content: center; width: 50px; height: 50px;
-      flex-shrink: 0; background: var(--green-900);
-      border-radius: var(--radius-sm); gap: 1px;
-    }
-    .day-block.is-today .day-date-chip { background: var(--green-700); }
-    .day-date-chip .chip-dow {
-      font-size: 8px; font-weight: 700; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--green-400);
-    }
-    .day-date-chip .chip-num {
-      font-family: var(--font-serif); font-size: 22px; font-weight: 700;
-      color: #fff; line-height: 1;
-    }
-    .day-date-chip .chip-mon {
-      font-size: 8px; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: rgba(255,255,255,0.4);
-    }
+    /* Column body */
+    .cal-col-body { flex: 1; display: flex; flex-direction: column; }
 
-    /* Text area next to the chip */
-    .day-head-info {
-      flex: 1; min-width: 0;
-      display: flex; flex-direction: column; gap: 2px;
-    }
-    .day-head-full {
-      display: block; font-size: 12.5px; font-weight: 600;
-      color: var(--gray-800); line-height: 1.2;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .day-event-count {
-      display: block; font-size: 10.5px;
-      color: var(--gray-400); font-weight: 500;
-    }
-    .day-today-tag {
-      display: inline-block; margin-top: 3px;
-      font-size: 8.5px; font-weight: 800; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--green-700);
-      background: var(--green-100); border: 1px solid var(--green-200);
-      border-radius: 20px; padding: 2px 8px; align-self: flex-start;
-    }
-
-    /* Event rows inside a day block */
-    .day-event-row {
-      padding: 10px 16px 10px 13px;
+    /* Individual event */
+    .cal-event {
+      padding: 9px 10px;
       border-left: 3px solid transparent;
       transition: background 0.15s ease, border-left-color 0.15s ease;
     }
-    .day-event-row:not(:last-child) { border-bottom: 1px solid var(--gray-100); }
-    .day-event-row:hover {
+    .cal-event:not(:last-child) { border-bottom: 1px solid var(--gray-100); }
+    .cal-event:hover {
       background: var(--green-50);
       border-left-color: var(--green-600);
     }
-    .day-event-content { display: flex; flex-direction: column; gap: 3px; }
-    .day-event-title {
-      font-size: 13px; font-weight: 600;
+    .cal-event-title {
+      font-size: 11px; font-weight: 600;
       color: var(--gray-800); line-height: 1.35;
     }
-    .day-event-time {
-      font-size: 11px; color: var(--green-700);
-      font-weight: 500; display: flex; align-items: center; gap: 4px;
+    .cal-event-time {
+      font-size: 10px; color: var(--green-700);
+      font-weight: 500; margin-top: 3px;
+      display: flex; align-items: center; gap: 3px;
     }
-    .day-event-meta { font-size: 10.5px; color: var(--gray-400); line-height: 1.4; }
+    .cal-event-meta {
+      font-size: 9.5px; color: var(--gray-400);
+      margin-top: 2px; line-height: 1.4;
+    }
+
+    /* Empty-day body */
+    .cal-no-events {
+      flex: 1; display: flex;
+      align-items: center; justify-content: center; padding: 24px 8px;
+    }
+    .cal-no-events span { font-size: 18px; color: var(--gray-200); }
 
     /* Empty / Error / Loading states */
     .events-state {
@@ -486,9 +490,7 @@
     @media (max-width: 900px) {
       .grades-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    @media (max-width: 700px) {
-      .events-days-grid { grid-template-columns: 1fr; }
-    }
+
     @media (max-width: 600px) {
       .nav-pill { display: none; }
       .hero { padding: 64px 20px 60px; }
@@ -1071,53 +1073,64 @@
     /* Inline location pin SVG */
     var PIN = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-top:-1px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>';
 
-    function renderDayBlock(day, today) {
-      var isToday   = (day.date.toDateString() === today.toDateString());
-      var evCount   = day.events.length;
-      var countText = (evCount === 1) ? '1 event' : (evCount + ' events');
-      var fullDay   = FULL_DAYS[day.date.getDay()] + ', '
-                    + FULL_MONS[day.date.getMonth()] + ' ' + day.date.getDate();
+    /* ── Render the full 7-column horizontal calendar ────────────── */
+    function renderCalendarGrid(dayEvents, weekStart, today) {
+      /* Build lookup: date timestamp → events array */
+      var map = {};
+      for (var k = 0; k < dayEvents.length; k++) {
+        map[dayEvents[k].date.getTime()] = dayEvents[k].events;
+      }
 
-      var evHtml = day.events.map(function(ev) {
-        var metaLine = '';
-        if (ev.inCharge && ev.venue) {
-          metaLine = PIN + ' ' + esc(ev.venue) + '&nbsp;&nbsp;&middot;&nbsp;&nbsp;' + esc(ev.inCharge);
-        } else if (ev.venue) {
-          metaLine = PIN + ' ' + esc(ev.venue);
-        } else if (ev.inCharge) {
-          metaLine = esc(ev.inCharge);
-        }
+      var cols = '';
+      for (var i = 0; i < 7; i++) {
+        var d = new Date(weekStart.getTime());
+        d.setDate(weekStart.getDate() + i);
 
-        return [
-          '<div class="day-event-row">',
-          '  <div class="day-event-content">',
-          '    <div class="day-event-title">' + esc(ev.title) + '</div>',
-          ev.time ? ('    <div class="day-event-time">' + CLOCK + ' ' + esc(ev.time) + '</div>') : '',
-          metaLine ? ('    <div class="day-event-meta">' + metaLine + '</div>') : '',
-          '  </div>',
+        var isToday = (d.toDateString() === today.toDateString());
+        var events  = map[d.getTime()] || [];
+        var isEmpty = events.length === 0;
+
+        var cls = 'cal-col '
+                + (isEmpty ? 'is-empty' : 'has-events')
+                + (isToday ? ' is-today' : '');
+
+        var head = [
+          '<div class="cal-col-head">',
+          '  <span class="cal-dow">' + DOW[d.getDay()] + '</span>',
+          '  <span class="cal-day-num">' + d.getDate() + '</span>',
+          '  <span class="cal-month-lbl">' + MONS[d.getMonth()] + '</span>',
+          isToday ? '  <span class="cal-today-badge">Today</span>' : '',
           '</div>'
         ].filter(Boolean).join('\n');
-      }).join('\n');
 
-      return [
-        '<div class="day-block' + (isToday ? ' is-today' : '') + '">',
-        '  <div class="day-block-head">',
-        '    <div class="day-date-chip" aria-hidden="true">',
-        '      <span class="chip-dow">' + DOW[day.date.getDay()] + '</span>',
-        '      <span class="chip-num">' + day.date.getDate()      + '</span>',
-        '      <span class="chip-mon">' + MONS[day.date.getMonth()]+'</span>',
-        '    </div>',
-        '    <div class="day-head-info">',
-        '      <span class="day-head-full">' + esc(fullDay) + '</span>',
-        '      <span class="day-event-count">' + esc(countText) + '</span>',
-        isToday ? '      <span class="day-today-tag">Today</span>' : '',
-        '    </div>',
-        '  </div>',
-        '  <div class="day-events-list" role="list">',
-        evHtml,
-        '  </div>',
-        '</div>'
-      ].filter(Boolean).join('\n');
+        var body;
+        if (isEmpty) {
+          body = '<div class="cal-col-body"><div class="cal-no-events"><span>&mdash;</span></div></div>';
+        } else {
+          var evRows = events.map(function(ev) {
+            var meta = '';
+            if (ev.inCharge && ev.venue) {
+              meta = PIN + ' ' + esc(ev.venue) + '&nbsp;&middot;&nbsp;' + esc(ev.inCharge);
+            } else if (ev.venue) {
+              meta = PIN + ' ' + esc(ev.venue);
+            } else if (ev.inCharge) {
+              meta = esc(ev.inCharge);
+            }
+            return [
+              '<div class="cal-event">',
+              '  <div class="cal-event-title">' + esc(ev.title) + '</div>',
+              ev.time ? ('  <div class="cal-event-time">' + CLOCK + ' ' + esc(ev.time) + '</div>') : '',
+              meta ? ('  <div class="cal-event-meta">' + meta + '</div>') : '',
+              '</div>'
+            ].filter(Boolean).join('\n');
+          }).join('\n');
+          body = '<div class="cal-col-body">' + evRows + '</div>';
+        }
+
+        cols += '<div class="' + cls + '">' + head + body + '</div>\n';
+      }
+
+      return '<div class="cal-week-grid">' + cols + '</div>';
     }
 
     function renderEmpty(msg, sub) {
@@ -1179,10 +1192,7 @@
             'Events added to the School Calendar will appear here automatically.'
           );
         } else {
-          container.innerHTML =
-            '<div class="events-days-grid">' +
-            dayEvents.map(function(d){ return renderDayBlock(d, today); }).join('\n') +
-            '</div>';
+          container.innerHTML = renderCalendarGrid(dayEvents, weekStart, today);
         }
 
       } catch (err) {
