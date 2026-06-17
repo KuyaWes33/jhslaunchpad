@@ -197,47 +197,49 @@
       color: var(--gray-400); letter-spacing: 0.01em;
     }
 
-    .events-week-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+    .events-week-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 8px;
+      align-items: start;
     }
 
-    .events-pair {
+    .events-day-col {
+      min-width: 0;
       background: var(--surface);
       border: 1px solid var(--gray-200);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-md);
       overflow: hidden;
       box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      min-height: 570px;
     }
 
-    .events-pair-head,
-    .events-pair-events {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .events-pair-head {
-      background: var(--gray-100);
-      border-bottom: 1px solid var(--gray-200);
+    .events-day-col.is-weekend {
+      background: #fff;
     }
 
     .events-day-head {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 12px;
-      min-width: 0;
-      padding: 12px 14px;
-      border-right: 1px solid var(--gray-200);
+      justify-content: center;
+      gap: 4px;
+      min-height: 88px;
+      padding: 12px 8px 10px;
+      text-align: center;
+      border-bottom: 1px solid var(--gray-200);
+      background: linear-gradient(180deg, var(--green-900) 0%, var(--green-950) 100%);
     }
 
-    .events-pair-head .events-day-head:last-child,
-    .events-pair-events .events-day-events:last-child {
-      border-right: none;
+    .events-day-col.is-weekend .events-day-head {
+      background: #f5f7fb;
     }
 
-    .events-day-head.is-today {
-      background: var(--green-50);
+    .events-day-col.is-today .events-day-head {
+      background: linear-gradient(180deg, var(--green-700) 0%, var(--green-600) 100%);
+      border-bottom-color: rgba(255,255,255,0.12);
     }
 
     .events-day-chip {
@@ -245,13 +247,22 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 1px;
       width: 52px;
       height: 52px;
-      flex-shrink: 0;
-      background: var(--green-900);
       border-radius: var(--radius-sm);
-      gap: 1px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .events-day-col:not(.is-weekend):not(.is-today) .events-day-chip {
+      background: rgba(255,255,255,0.06);
+    }
+
+    .events-day-col.is-today .events-day-chip {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .events-day-col.is-weekend .events-day-chip {
+      background: transparent;
     }
 
     .events-day-chip .chip-dow {
@@ -262,12 +273,20 @@
       color: var(--green-400);
     }
 
+    .events-day-col.is-weekend .events-day-chip .chip-dow {
+      color: var(--gray-400);
+    }
+
     .events-day-chip .chip-num {
       font-family: var(--font-serif);
       font-size: 22px;
       font-weight: 700;
       color: #fff;
       line-height: 1;
+    }
+
+    .events-day-col.is-weekend .events-day-chip .chip-num {
+      color: var(--gray-400);
     }
 
     .events-day-chip .chip-mon {
@@ -278,30 +297,41 @@
       color: rgba(255,255,255,0.42);
     }
 
+    .events-day-col.is-weekend .events-day-chip .chip-mon {
+      color: var(--gray-400);
+    }
+
     .events-day-info {
-      flex: 1;
-      min-width: 0;
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 2px;
+      min-width: 0;
     }
 
     .events-day-title {
       display: block;
-      font-size: 12.5px;
-      font-weight: 700;
-      color: var(--gray-800);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.92);
       line-height: 1.2;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    }
+
+    .events-day-col.is-weekend .events-day-title {
+      color: var(--gray-500);
     }
 
     .events-day-count {
       display: block;
-      font-size: 10.5px;
-      color: var(--gray-400);
+      font-size: 10px;
+      color: rgba(255,255,255,0.7);
       font-weight: 500;
+    }
+
+    .events-day-col.is-weekend .events-day-count {
+      color: var(--gray-400);
     }
 
     .events-day-tag {
@@ -316,38 +346,71 @@
       border: 1px solid var(--green-200);
       border-radius: 20px;
       padding: 2px 8px;
-      align-self: flex-start;
+    }
+
+    .events-day-col.is-today .events-day-tag {
+      color: #fff;
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(255,255,255,0.22);
     }
 
     .events-day-events {
-      min-height: 100%;
-      border-right: 1px solid var(--gray-100);
+      flex: 1;
+      min-height: 0;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .events-day-col.is-weekend .events-day-events {
       background: #fff;
     }
 
     .day-event-row {
-      padding: 10px 14px 10px 13px;
+      padding: 10px 12px 10px 12px;
       border-left: 3px solid transparent;
       transition: background 0.15s ease, border-left-color 0.15s ease;
     }
-    .day-event-row:not(:last-child) { border-bottom: 1px solid var(--gray-100); }
+
+    .day-event-row:not(:last-child) {
+      border-bottom: 1px solid var(--gray-100);
+    }
+
     .day-event-row:hover {
       background: var(--green-50);
       border-left-color: var(--green-600);
     }
-    .day-event-content { display: flex; flex-direction: column; gap: 3px; }
+
+    .day-event-content {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
     .day-event-title {
-      font-size: 13px; font-weight: 600;
-      color: var(--gray-800); line-height: 1.35;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-800);
+      line-height: 1.35;
     }
+
     .day-event-time {
-      font-size: 11px; color: var(--green-700);
-      font-weight: 500; display: flex; align-items: center; gap: 4px;
+      font-size: 11px;
+      color: var(--green-700);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
-    .day-event-meta { font-size: 10.5px; color: var(--gray-400); line-height: 1.4; }
+
+    .day-event-meta {
+      font-size: 10.5px;
+      color: var(--gray-400);
+      line-height: 1.4;
+    }
 
     .day-events-empty {
-      padding: 16px 14px;
+      padding: 16px 12px;
       font-size: 12px;
       color: var(--gray-400);
     }
@@ -374,7 +437,7 @@
       border-radius: 50%; animation: spin 0.75s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-    /* ─────────────────────────────────────────────
+/* ─────────────────────────────────────────────
        RESOURCE CARDS
     ───────────────────────────────────────────── */
     .resources-grid {
@@ -1087,18 +1150,16 @@
 
         var d   = midnight(parsed);
         var key = d.getTime();
-        if (seen[key]) continue; /* skip duplicate date columns */
+        if (seen[key]) continue;
         seen[key] = true;
 
         if (d < weekStart || d > weekEnd) continue;
 
-        /* Collect all non-empty cells below this date column */
         var eventTexts = [];
         for (var row = 1; row < rows.length; row++) {
           var cell = (rows[row][col] || '').trim();
           if (!cell) continue;
 
-          /* Split in case one cell contains multiple events */
           var blocks = splitEventBlocks(cell);
           for (var b = 0; b < blocks.length; b++) {
             eventTexts.push(blocks[b]);
@@ -1114,7 +1175,6 @@
         eventsByDay[key] = events;
       }
 
-      /* Build every day from Sunday to Saturday so the layout stays complete */
       var days = [];
       var cur = new Date(weekStart);
       while (cur <= weekEnd) {
@@ -1139,7 +1199,7 @@
 
     function fmtRange(a, b) {
       return MONS[a.getMonth()] + ' ' + a.getDate()
-           + ' \u2013 '
+           + ' – '
            + MONS[b.getMonth()] + ' ' + b.getDate()
            + ', ' + b.getFullYear();
     }
@@ -1173,59 +1233,39 @@
           metaLine ? ('    <div class="day-event-meta">' + metaLine + '</div>') : '',
           '  </div>',
           '</div>'
-        ].filter(Boolean).join('\n');
-      }).join('\n');
+        ].filter(Boolean).join('
+');
+      }).join('
+');
     }
 
-    function renderDayHead(day, today) {
+    function renderDayColumn(day, today) {
       var isToday   = (day.date.toDateString() === today.toDateString());
+      var isWeekend = (day.date.getDay() === 0 || day.date.getDay() === 6);
       var evCount   = day.events.length;
       var countText = (evCount === 1) ? '1 event' : (evCount + ' events');
       var fullDay   = FULL_DAYS[day.date.getDay()] + ', '
                     + FULL_MONS[day.date.getMonth()] + ' ' + day.date.getDate();
 
       return [
-        '<div class="events-day-head' + (isToday ? ' is-today' : '') + '">',
-        '  <div class="events-day-chip" aria-hidden="true">',
-        '    <span class="chip-dow">' + DOW[day.date.getDay()] + '</span>',
-        '    <span class="chip-num">' + day.date.getDate() + '</span>',
-        '    <span class="chip-mon">' + MONS[day.date.getMonth()] + '</span>',
+        '<section class="events-day-col' + (isToday ? ' is-today' : '') + (isWeekend ? ' is-weekend' : '') + '">',
+        '  <div class="events-day-head">',
+        '    <div class="events-day-chip" aria-hidden="true">',
+        '      <span class="chip-dow">' + DOW[day.date.getDay()] + '</span>',
+        '      <span class="chip-num">' + day.date.getDate() + '</span>',
+        '      <span class="chip-mon">' + MONS[day.date.getMonth()] + '</span>',
+        '    </div>',
+        '    <div class="events-day-info">',
+        '      <span class="events-day-title">' + esc(fullDay) + '</span>',
+        '      <span class="events-day-count">' + esc(countText) + '</span>',
+        isToday ? '      <span class="events-day-tag">Today</span>' : '',
+        '    </div>',
         '  </div>',
-        '  <div class="events-day-info">',
-        '    <span class="events-day-title">' + esc(fullDay) + '</span>',
-        '    <span class="events-day-count">' + esc(countText) + '</span>',
-        isToday ? '    <span class="events-day-tag">Today</span>' : '',
-        '  </div>',
-        '</div>'
-      ].filter(Boolean).join('\n');
-    }
-
-    function renderDayEvents(day) {
-      return [
-        '<div class="events-day-events" role="list">',
+        '  <div class="events-day-events" role="list">',
         renderEventRows(day.events),
-        '</div>'
-      ].join('\n');
-    }
-
-    function renderWeekPair(leftDay, rightDay, today) {
-      var rightHead = rightDay ? renderDayHead(rightDay, today)
-                               : '<div class="events-day-head" aria-hidden="true"></div>';
-      var rightEvents = rightDay ? renderDayEvents(rightDay)
-                                 : '<div class="events-day-events" aria-hidden="true"></div>';
-
-      return [
-        '<section class="events-pair" aria-label="Weekly events pair">',
-        '  <div class="events-pair-head">',
-        renderDayHead(leftDay, today),
-        rightHead,
-        '  </div>',
-        '  <div class="events-pair-events">',
-        renderDayEvents(leftDay),
-        rightEvents,
         '  </div>',
         '</section>'
-      ].join('\n');
+      ].filter(Boolean).join('\n');
     }
 
     function renderEmpty(msg, sub) {
@@ -1288,14 +1328,9 @@
             'Events added to the School Calendar will appear here automatically.'
           );
         } else {
-          var pairs = [];
-          for (var i = 0; i < dayEvents.length; i += 2) {
-            pairs.push(renderWeekPair(dayEvents[i], dayEvents[i + 1], today));
-          }
-
           container.innerHTML =
-            '<div class="events-week-list">' +
-            pairs.join('\n') +
+            '<div class="events-week-grid">' +
+            dayEvents.map(function(day) { return renderDayColumn(day, today); }).join('\n') +
             '</div>';
         }
 
