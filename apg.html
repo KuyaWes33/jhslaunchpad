@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="JHS Launchpad — Assessment Planning Guide (APG), MGC New Life Christian Academy">
+  <title>JHS Launchpad — Assessment Planning Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    img, svg { display: block; }
+    a { text-decoration: none; }
+
+    :root {
+      --green-950:  #061410;
+      --green-900:  #0f3d22;
+      --green-800:  #165c33;
+      --green-700:  #1c7a42;
+      --green-600:  #22964f;
+      --green-400:  #4dbd74;
+      --green-200:  #a7f0be;
+      --green-100:  #d1fae5;
+      --green-50:   #f0fdf4;
+      --amber-600:  #c07a0a;
+      --amber-400:  #e8a81a;
+      --amber-100:  #fef3c7;
+      --amber-50:   #fffbeb;
+      --red-600:    #c0291c;
+      --red-400:    #ef4444;
+      --red-100:    #fee2e2;
+      --red-50:     #fef2f2;
+      --surface:    #ffffff;
+      --bg:         #f5fbf7;
+      --gray-100:   #f3f4f6;
+      --gray-200:   #e5e7eb;
+      --gray-400:   #9ca3af;
+      --gray-600:   #4b5563;
+      --gray-800:   #1f2937;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'Plus Jakarta Sans', -apple-system, sans-serif;
+      --shadow-sm:  0 1px 4px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md:  0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+      --shadow-lg:  0 12px 24px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.04);
+      --ease:       cubic-bezier(0.4, 0, 0.2, 1);
+      --transition: all 0.25s var(--ease);
+      --radius-sm:  8px;
+      --radius-md:  12px;
+      --radius-lg:  16px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--gray-800);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ══════════════════════════ NAVBAR ══════════════════════════ */
+    .navbar {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--green-100);
+      box-shadow: 0 1px 6px rgba(15,61,34,0.07);
+    }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 28px;
+      height: 68px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 14px; }
+    .nav-emblem {
+      width: 42px; height: 42px; background: var(--green-900);
+      border-radius: var(--radius-sm); display: grid; place-items: center;
+      flex-shrink: 0; box-shadow: 0 2px 8px rgba(15,61,34,0.3);
+    }
+    .nav-emblem svg {
+      width: 22px; height: 22px; stroke: white; fill: none;
+      stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .nav-text-stack { display: flex; flex-direction: column; }
+    .nav-primary {
+      font-family: var(--font-serif); font-size: 19px; font-weight: 600;
+      color: var(--green-900); line-height: 1.15; letter-spacing: 0.01em;
+    }
+    .nav-secondary {
+      font-size: 10.5px; font-weight: 600; color: var(--green-700);
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .breadcrumb {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12.5px; font-weight: 500; color: var(--gray-400);
+    }
+    .breadcrumb-home { color: var(--green-700); font-weight: 600; transition: color 0.2s ease; }
+    .breadcrumb-home:hover { color: var(--green-900); }
+    .breadcrumb-sep { color: var(--gray-400); font-size: 14px; }
+    .breadcrumb-current { color: var(--gray-600); font-weight: 600; }
+
+    /* ══════════════════════════ HERO ══════════════════════════ */
+    .hero {
+      position: relative; background: var(--green-900);
+      overflow: hidden; padding: 76px 28px 68px; text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cpath d='M32 12v40M12 32h40' stroke='%23ffffff' stroke-width='0.6' stroke-opacity='0.04'/%3E%3Cpath d='M12 12l40 40M52 12L12 52' stroke='%23ffffff' stroke-width='0.4' stroke-opacity='0.025'/%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 15% 60%, rgba(28,122,66,0.35) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 85% 25%, rgba(192,122,10,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 50% 100%, rgba(6,20,16,0.6) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-mark {
+      position: absolute;
+      font-family: var(--font-serif); font-weight: 700; font-size: 220px;
+      letter-spacing: -0.03em;
+      color: rgba(255,255,255,0.04);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none; user-select: none; white-space: nowrap; line-height: 1;
+      z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--amber-400);
+      margin-bottom: 18px;
+      opacity: 0; animation: fadeUp 0.7s var(--ease) 0.1s both;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; display: block; width: 28px; height: 1px;
+      background: var(--amber-400); opacity: 0.55;
+    }
+    .hero-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 6vw, 62px);
+      font-weight: 600; color: #ffffff;
+      line-height: 1.08; letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      opacity: 0; animation: fadeUp 0.7s var(--ease) 0.2s both;
+    }
+    .hero-rule {
+      display: flex; align-items: center; gap: 14px; justify-content: center;
+      margin: 22px 0;
+      opacity: 0; animation: fadeUp 0.7s var(--ease) 0.3s both;
+    }
+    .hero-rule-line { flex: 1; max-width: 60px; height: 1px; background: rgba(255,255,255,0.15); }
+    .hero-rule-diamond { width: 6px; height: 6px; background: var(--amber-400); transform: rotate(45deg); border-radius: 1px; }
+    .hero-body {
+      font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.65);
+      max-width: 480px; margin: 0 auto; line-height: 1.75;
+      opacity: 0; animation: fadeUp 0.7s var(--ease) 0.4s both;
+    }
+    .hero-tags {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+      margin-top: 22px;
+      opacity: 0; animation: fadeUp 0.7s var(--ease) 0.5s both;
+    }
+    .hero-tag {
+      font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--green-100);
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14);
+      padding: 5px 13px; border-radius: 20px;
+    }
+
+    /* ══════════════════════════ SECTION ══════════════════════════ */
+    .section { max-width: 1120px; margin: 0 auto; padding: 52px 28px; }
+    .section-header { margin-bottom: 32px; }
+    .section-eyebrow {
+      font-size: 10.5px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--green-700); margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: var(--font-serif); font-size: 32px;
+      font-weight: 600; color: var(--green-900); line-height: 1.15;
+    }
+    .section-title span { position: relative; display: inline-block; }
+    .section-title span::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 2px; background: var(--amber-400); border-radius: 1px;
+    }
+    .section-intro {
+      font-size: 14.5px; color: var(--gray-600); max-width: 640px;
+      margin-top: 14px; line-height: 1.75;
+    }
+
+    /* ══════════════════════════ APP TAB NAV ══════════════════════════ */
+    .apg-shell { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+    .apg-tabbar {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      padding: 18px 0 0;
+    }
+    .apg-tab {
+      border: 1.5px solid var(--gray-200);
+      background: var(--surface);
+      color: var(--gray-600);
+      font-family: var(--font-sans); font-size: 13px; font-weight: 700;
+      letter-spacing: 0.03em;
+      padding: 10px 20px;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+    .apg-tab:hover { border-color: var(--green-200); background: var(--green-50); color: var(--green-800); }
+    .apg-tab.is-active {
+      background: var(--green-900); border-color: var(--green-900);
+      color: #ffffff; box-shadow: var(--shadow-md);
+    }
+
+    .apg-page { display: none; }
+    .apg-page.is-active { display: block; animation: fadeUp 0.45s var(--ease) both; }
+
+    /* ══════════════════════════ OVERVIEW CARDS ══════════════════════════ */
+    .apg-home-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .apg-home-card {
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+      padding: 28px 24px 24px;
+      background: var(--surface);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .apg-home-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--green-700), var(--green-400));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.35s var(--ease);
+    }
+    .apg-home-card:hover {
+      border-color: var(--green-200);
+      box-shadow: var(--shadow-lg), 0 0 0 4px rgba(28,122,66,0.07);
+      transform: translateY(-4px);
+    }
+    .apg-home-card:hover::before { transform: scaleX(1); }
+    .apg-home-icon {
+      width: 50px; height: 50px; border-radius: var(--radius-sm);
+      background: var(--green-50); border: 1px solid var(--green-100);
+      display: grid; place-items: center; margin-bottom: 18px;
+    }
+    .apg-home-icon svg {
+      width: 22px; height: 22px; stroke: var(--green-700); fill: none;
+      stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .apg-home-title {
+      font-family: var(--font-serif); font-size: 22px; font-weight: 600;
+      color: var(--green-900); margin-bottom: 8px;
+    }
+    .apg-home-desc { font-size: 13.5px; color: var(--gray-600); line-height: 1.65; margin-bottom: 22px; flex: 1; }
+
+    /* ══════════════════════════ BUTTONS ══════════════════════════ */
+    .apg-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      width: fit-content;
+      padding: 12px 22px;
+      background: var(--green-900); color: #ffffff;
+      border: none; border-radius: var(--radius-sm);
+      font-family: var(--font-sans); font-size: 12.5px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 8px rgba(15,61,34,0.2);
+    }
+    .apg-btn:hover { background: var(--green-800); box-shadow: 0 4px 14px rgba(15,61,34,0.3); }
+    .apg-btn:active { transform: scale(0.98); }
+    .apg-btn.is-block { width: 100%; }
+    .apg-btn-outline {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 11px 20px;
+      background: var(--surface); color: var(--green-800);
+      border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm);
+      font-family: var(--font-sans); font-size: 12.5px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      cursor: pointer; transition: var(--transition);
+    }
+    .apg-btn-outline:hover { border-color: var(--green-200); background: var(--green-50); }
+
+    /* ══════════════════════════ CARDS / LAYOUT ══════════════════════════ */
+    .apg-card {
+      background: var(--surface);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      padding: 28px 26px;
+    }
+    .apg-card + .apg-card { margin-top: 16px; }
+    .apg-card-title {
+      font-family: var(--font-serif); font-size: 21px; font-weight: 600;
+      color: var(--green-900); margin-bottom: 6px;
+    }
+    .apg-card-sub { font-size: 13px; color: var(--gray-600); margin-bottom: 22px; line-height: 1.6; }
+    .apg-result-card { border-left: 4px solid var(--green-700); }
+
+    .apg-split {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .apg-subnav {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;
+    }
+    .apg-subnav-btn {
+      border: 1px solid var(--gray-200); background: var(--surface);
+      color: var(--gray-600);
+      padding: 9px 16px; border-radius: var(--radius-sm);
+      font-family: var(--font-sans); font-size: 12px; font-weight: 700;
+      letter-spacing: 0.03em; cursor: pointer; transition: var(--transition);
+    }
+    .apg-subnav-btn:hover { border-color: var(--green-200); background: var(--green-50); color: var(--green-800); }
+    .apg-subnav-btn.is-active { background: var(--green-100); border-color: var(--green-200); color: var(--green-800); }
+
+    .apg-module { display: none; }
+    .apg-module.is-active { display: block; animation: fadeUp 0.4s var(--ease) both; }
+
+    /* ══════════════════════════ FORMS ══════════════════════════ */
+    .apg-field { margin-bottom: 18px; }
+    .apg-field:last-child { margin-bottom: 0; }
+    .apg-label {
+      display: block; margin-bottom: 7px;
+      font-size: 12.5px; font-weight: 700; letter-spacing: 0.02em;
+      color: var(--gray-800);
+    }
+    .apg-input, .apg-select {
+      width: 100%; padding: 12px 14px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-sans); font-size: 14px;
+      color: var(--gray-800); background: #fff;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+    }
+    .apg-input::placeholder { color: var(--gray-400); }
+    .apg-input:focus, .apg-select:focus {
+      border-color: var(--green-700);
+      box-shadow: 0 0 0 3px rgba(28,122,66,0.12);
+    }
+    .apg-helper { display: block; margin-top: 6px; font-size: 11.5px; color: var(--gray-400); line-height: 1.5; }
+
+    .apg-radio-group { display: flex; flex-direction: column; gap: 10px; }
+    .apg-radio-option {
+      display: flex; align-items: center; gap: 12px;
+      padding: 13px 16px;
+      border: 1.5px solid var(--gray-200); border-radius: var(--radius-md);
+      cursor: pointer; transition: var(--transition); background: var(--surface);
+    }
+    .apg-radio-option:hover { border-color: var(--green-200); background: var(--green-50); }
+    .apg-radio-option:has(input:checked) {
+      border-color: var(--green-700); background: var(--green-50);
+      box-shadow: 0 0 0 3px rgba(28,122,66,0.08);
+    }
+    .apg-radio-option input[type="radio"] {
+      width: 17px; height: 17px; accent-color: var(--green-700);
+      flex-shrink: 0; cursor: pointer;
+    }
+    .apg-radio-option span { font-size: 13.5px; font-weight: 600; color: var(--gray-800); }
+
+    .apg-stgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 4px; }
+    .apg-placeholder { color: var(--gray-400); font-size: 13.5px; font-style: italic; }
+    .is-hidden { display: none !important; }
+
+    /* ══════════════════════════ STATUS BOXES ══════════════════════════ */
+    .apg-status {
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--gray-400);
+      background: var(--gray-100);
+      padding: 16px 18px;
+      margin-bottom: 14px;
+    }
+    .apg-status-head {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 800; letter-spacing: 0.06em;
+      text-transform: uppercase; margin-bottom: 4px;
+    }
+    .apg-status-head svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2.3; flex-shrink: 0; }
+    .apg-status.is-ideal    { background: var(--green-50);  border-left-color: var(--green-700); }
+    .apg-status.is-ideal    .apg-status-head { color: var(--green-800); }
+    .apg-status.is-acceptable { background: var(--amber-50); border-left-color: var(--amber-600); }
+    .apg-status.is-acceptable .apg-status-head { color: var(--amber-600); }
+    .apg-status.is-error    { background: var(--red-50);    border-left-color: var(--red-600); }
+    .apg-status.is-error    .apg-status-head { color: var(--red-600); }
+    .apg-status p, .apg-status li { font-size: 13.5px; color: var(--gray-600); line-height: 1.6; }
+    .apg-status ul { margin-left: 18px; margin-top: 6px; }
+    .apg-status-stats {
+      display: flex; gap: 18px; margin-top: 10px; flex-wrap: wrap;
+    }
+    .apg-stat { display: flex; flex-direction: column; gap: 2px; }
+    .apg-stat-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-400); }
+    .apg-stat-value { font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: var(--gray-800); }
+    .apg-result-list { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+    .apg-result-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px; background: var(--surface);
+      border: 1px solid var(--gray-200); border-radius: var(--radius-sm);
+      font-size: 13px;
+    }
+    .apg-result-row strong { color: var(--gray-800); font-weight: 700; }
+    .apg-result-row span { color: var(--green-700); font-weight: 700; }
+
+    /* ══════════════════════════ TABLES ══════════════════════════ */
+    .apg-table-wrap { overflow-x: auto; border-radius: var(--radius-md); border: 1px solid var(--gray-200); }
+    .apg-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .apg-table th {
+      background: var(--green-900); color: #ffffff;
+      font-weight: 700; letter-spacing: 0.03em;
+      text-align: left; padding: 12px 14px; white-space: nowrap;
+    }
+    .apg-table td { padding: 11px 14px; border-bottom: 1px solid var(--gray-200); color: var(--gray-800); }
+    .apg-table tr:last-child td { border-bottom: none; }
+    .apg-table tbody tr:nth-child(even) { background: var(--green-50); }
+    .apg-table tfoot th { background: var(--green-100); color: var(--green-900); }
+    .apg-table input.apg-input { padding: 9px 11px; font-size: 13.5px; }
+
+    .apg-table-actions { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+
+    /* ══════════════════════════ ABOUT PAGE ══════════════════════════ */
+    .apg-about-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .apg-about-card h3 {
+      font-family: var(--font-serif); font-size: 18px; font-weight: 600;
+      color: var(--green-900); margin-bottom: 10px;
+    }
+    .apg-about-card p { font-size: 13.5px; color: var(--gray-600); line-height: 1.75; }
+    .apg-about-card ul { margin-top: 10px; margin-left: 18px; display: flex; flex-direction: column; gap: 7px; }
+    .apg-about-card li { font-size: 13.5px; color: var(--gray-600); line-height: 1.6; }
+    .apg-about-card.is-wide { grid-column: 1 / -1; }
+    .apg-disclaimer {
+      background: var(--amber-50); border: 1px solid var(--amber-100);
+      border-radius: var(--radius-md); padding: 18px 20px;
+    }
+    .apg-disclaimer h3 { color: var(--amber-600); }
+
+    /* ══════════════════════════ CONTACT BANNER ══════════════════════════ */
+    .contact-banner { max-width: 1120px; margin: 0 auto 60px; padding: 0 28px; }
+    .contact-inner {
+      background: linear-gradient(135deg, var(--green-900) 0%, var(--green-800) 100%);
+      border-radius: var(--radius-lg); padding: 26px 34px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; box-shadow: var(--shadow-md);
+    }
+    .contact-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-400); margin-bottom: 4px; }
+    .contact-msg { font-family: var(--font-serif); font-size: 21px; font-weight: 500; color: white; line-height: 1.3; }
+    .contact-icon-wrap {
+      width: 52px; height: 52px; border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.12);
+      display: grid; place-items: center; flex-shrink: 0;
+    }
+    .contact-icon-wrap svg { width: 24px; height: 24px; stroke: var(--green-400); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ══════════════════════════ FOOTER ══════════════════════════ */
+    footer { background: var(--green-950); padding: 40px 28px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer-inner { max-width: 1120px; margin: 0 auto; }
+    .footer-cross { display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .footer-cross svg { width: 18px; height: 18px; stroke: rgba(255,255,255,0.2); fill: none; stroke-width: 2; }
+    .footer-school { font-family: var(--font-serif); font-size: 18px; font-weight: 500; color: rgba(255,255,255,0.85); letter-spacing: 0.02em; margin-bottom: 4px; }
+    .footer-dept { font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green-400); margin-bottom: 16px; }
+    .footer-divider { width: 32px; height: 1px; background: rgba(255,255,255,0.1); margin: 0 auto 16px; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 0.06em; }
+
+    /* ══════════════════════════ ANIMATIONS ══════════════════════════ */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ══════════════════════════ RESPONSIVE ══════════════════════════ */
+    @media (max-width: 900px) {
+      .apg-home-grid { grid-template-columns: 1fr 1fr; }
+      .apg-split { grid-template-columns: 1fr; }
+      .apg-about-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 700px) {
+      .hero { padding: 56px 20px; }
+      .hero-mark { font-size: 120px; }
+      .section { padding: 40px 20px; }
+      .apg-shell { padding: 0 20px; }
+      .contact-inner { flex-direction: column; text-align: center; }
+      .contact-icon-wrap { display: none; }
+      .contact-banner { padding: 0 20px; }
+      .breadcrumb { display: none; }
+      .apg-home-grid { grid-template-columns: 1fr; }
+      .apg-stgrid { grid-template-columns: 1fr; }
+      .apg-card { padding: 22px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" role="banner">
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html">
+        <div class="nav-emblem" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M2 4.5C2 4.5 7 3 12 5.5C17 3 22 4.5 22 4.5V19.5C22 19.5 17 18 12 20.5C7 18 2 19.5 2 19.5V4.5Z"/>
+            <line x1="12" y1="5.5" x2="12" y2="20.5"/>
+          </svg>
+        </div>
+        <div class="nav-text-stack">
+          <span class="nav-primary">JHS Launchpad</span>
+          <span class="nav-secondary">MGC New Life Christian Academy</span>
+        </div>
+      </a>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html" class="breadcrumb-home">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">Assessment Planning Guide</span>
+      </nav>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <header class="hero">
+    <div class="hero-mark" aria-hidden="true">APG</div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Planning Tool</div>
+      <h1 class="hero-heading">Assessment Planning Guide</h1>
+      <div class="hero-rule" aria-hidden="true">
+        <div class="hero-rule-line"></div>
+        <div class="hero-rule-diamond"></div>
+        <div class="hero-rule-line"></div>
+      </div>
+      <p class="hero-body">
+        Plan, validate, and refine assessment structures aligned with the 40&ndash;60
+        Term Examination &ndash; Summative Test rule under Department Order No. 015.
+      </p>
+      <div class="hero-tags" aria-hidden="true">
+        <span class="hero-tag">Suggest a Plan</span>
+        <span class="hero-tag">Check Compliance</span>
+        <span class="hero-tag">TOS Builder</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── APP TAB NAV ── -->
+    <div class="apg-shell">
+      <div class="apg-tabbar" role="tablist" aria-label="Assessment Planning Guide sections">
+        <button class="apg-tab is-active" data-target="apgOverview" onclick="showApgPage('apgOverview', this)">Overview</button>
+        <button class="apg-tab" data-target="apgPlanner" onclick="showApgPage('apgPlanner', this)">Planner</button>
+        <button class="apg-tab" data-target="apgTOS" onclick="showApgPage('apgTOS', this)">TOS Builder</button>
+        <button class="apg-tab" data-target="apgAbout" onclick="showApgPage('apgAbout', this)">About</button>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         OVERVIEW
+    ══════════════════════════════════════════ -->
+    <section class="apg-page is-active" id="apgOverview">
+      <div class="section">
+        <div class="section-header">
+          <p class="section-eyebrow">Welcome to APG</p>
+          <h2 class="section-title"><span>What would you like to do?</span></h2>
+          <p class="section-intro">
+            A planning aid designed to help teachers create, review, and improve
+            assessment plans aligned with Department Order No. 015.
+          </p>
+        </div>
+
+        <div class="apg-home-grid">
+
+          <div class="apg-home-card">
+            <div class="apg-home-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+            </div>
+            <h3 class="apg-home-title">Assessment Planner</h3>
+            <p class="apg-home-desc">Suggest, check, or fix an assessment plan so it satisfies the 40&ndash;60 TE&ndash;ST rule.</p>
+            <button class="apg-btn" onclick="showApgPage('apgPlanner', document.querySelector('[data-target=apgPlanner]'))">Open Planner</button>
+          </div>
+
+          <div class="apg-home-card">
+            <div class="apg-home-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            </div>
+            <h3 class="apg-home-title">TOS Builder</h3>
+            <p class="apg-home-desc">Generate a Table of Specifications by allocating items or points across competencies and days.</p>
+            <button class="apg-btn" onclick="showApgPage('apgTOS', document.querySelector('[data-target=apgTOS]'))">Open TOS Builder</button>
+          </div>
+
+          <div class="apg-home-card">
+            <div class="apg-home-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="11"/><circle cx="12" cy="7.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+            </div>
+            <h3 class="apg-home-title">About</h3>
+            <p class="apg-home-desc">Review the basis, assumptions, and disclaimer behind every computation in this guide.</p>
+            <button class="apg-btn" onclick="showApgPage('apgAbout', document.querySelector('[data-target=apgAbout]'))">Learn More</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         PLANNER
+    ══════════════════════════════════════════ -->
+    <section class="apg-page" id="apgPlanner">
+      <div class="section">
+        <div class="section-header">
+          <p class="section-eyebrow">Assessment Planner</p>
+          <h2 class="section-title"><span>Plan Your Assessment</span></h2>
+        </div>
+
+        <div class="apg-subnav" role="tablist" aria-label="Planner modules">
+          <button class="apg-subnav-btn is-active" data-target="apgSuggest" onclick="showApgModule('apgSuggest', this)">Suggest a Plan</button>
+          <button class="apg-subnav-btn" data-target="apgCheck" onclick="showApgModule('apgCheck', this)">Check My Plan</button>
+          <button class="apg-subnav-btn" data-target="apgFix" onclick="showApgModule('apgFix', this)">Fix My Plan</button>
+        </div>
+
+        <!-- ── SUGGEST A PLAN ── -->
+        <div class="apg-module is-active" id="apgSuggest">
+          <div class="apg-split">
+
+            <div class="apg-card">
+              <h3 class="apg-card-title">Suggest a Plan</h3>
+              <p class="apg-card-sub">Begin planning using either the Term Examination (TE) or the Summative Tests (STs).</p>
+
+              <div class="apg-field">
+                <label class="apg-label">How would you like to start?</label>
+                <div class="apg-radio-group">
+                  <label class="apg-radio-option">
+                    <input type="radio" name="planStart" value="te" checked onchange="toggleSuggestMode()">
+                    <span>Start with Term Examination (TE)</span>
+                  </label>
+                  <label class="apg-radio-option">
+                    <input type="radio" name="planStart" value="st" onchange="toggleSuggestMode()">
+                    <span>Start with Summative Tests (STs)</span>
+                  </label>
+                </div>
+              </div>
+
+              <div id="teSuggestSection">
+                <div class="apg-field">
+                  <label class="apg-label" for="teItems">TE Number of Items</label>
+                  <input class="apg-input" type="number" id="teItems" min="50" placeholder="Minimum of 50 items">
+                </div>
+                <div class="apg-field">
+                  <label class="apg-label" for="tePoints">TE Number of Points</label>
+                  <input class="apg-input" type="number" id="tePoints" min="50" placeholder="Must be equal to or greater than TE items">
+                </div>
+                <div class="apg-field">
+                  <label class="apg-label" for="suggestSTCount">Number of Summative Tests</label>
+                  <select class="apg-select" id="suggestSTCount">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="stSuggestSection" class="is-hidden">
+                <div class="apg-field">
+                  <label class="apg-label" for="stSuggestCount">Number of Summative Tests</label>
+                  <select class="apg-select" id="stSuggestCount" onchange="generateSuggestSTInputs()">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                  </select>
+                </div>
+                <div id="suggestSTInputs" class="apg-stgrid"></div>
+              </div>
+
+              <div style="margin-top:22px">
+                <button class="apg-btn" onclick="generatePlan()">Review Plan</button>
+              </div>
+            </div>
+
+            <div class="apg-card apg-result-card">
+              <h3 class="apg-card-title">Review</h3>
+              <div id="suggestResults">
+                <p class="apg-placeholder">Suggested assessment plan will appear here.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── CHECK MY PLAN ── -->
+        <div class="apg-module" id="apgCheck">
+          <div class="apg-split">
+
+            <div class="apg-card">
+              <h3 class="apg-card-title">Check My Plan</h3>
+              <p class="apg-card-sub">Validate an assessment plan against APG requirements.</p>
+
+              <div class="apg-field">
+                <label class="apg-label" for="checkTEItems">TE Items</label>
+                <input class="apg-input" type="number" id="checkTEItems" min="50" placeholder="Minimum of 50 items">
+                <small class="apg-helper">Minimum: 50 items</small>
+              </div>
+
+              <div class="apg-field">
+                <label class="apg-label" for="checkTEPoints">TE Points</label>
+                <input class="apg-input" type="number" id="checkTEPoints" min="50" placeholder="Minimum of 50 points">
+                <small class="apg-helper">Minimum: 50 points and must be equal to or greater than TE Items</small>
+              </div>
+
+              <div class="apg-field">
+                <label class="apg-label" for="checkSTCount">Number of Summative Tests</label>
+                <select class="apg-select" id="checkSTCount">
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+
+              <div class="apg-field">
+                <label class="apg-label">Summative Test Points</label>
+                <div id="checkSTInputs" class="apg-stgrid"></div>
+              </div>
+
+              <div style="margin-top:6px">
+                <button class="apg-btn" onclick="checkPlan()">Validate Plan</button>
+              </div>
+            </div>
+
+            <div class="apg-card apg-result-card">
+              <h3 class="apg-card-title">Validation Result</h3>
+              <div id="checkResults">
+                <p class="apg-placeholder">Validation results will appear here.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── FIX MY PLAN ── -->
+        <div class="apg-module" id="apgFix">
+          <div class="apg-split">
+
+            <div class="apg-card">
+              <h3 class="apg-card-title">Fix My Plan</h3>
+              <p class="apg-card-sub">Enter a non-compliant plan and receive suggested revisions.</p>
+
+              <div class="apg-field">
+                <label class="apg-label" for="fixTEItems">TE Items</label>
+                <input class="apg-input" type="number" id="fixTEItems" min="50" placeholder="Minimum of 50 items">
+                <small class="apg-helper">Minimum: 50 items</small>
+              </div>
+
+              <div class="apg-field">
+                <label class="apg-label" for="fixTEPoints">TE Points</label>
+                <input class="apg-input" type="number" id="fixTEPoints" min="50" placeholder="Minimum of 50 points">
+                <small class="apg-helper">Minimum: 50 points and must be equal to or greater than TE Items</small>
+              </div>
+
+              <div class="apg-field">
+                <label class="apg-label" for="fixSTCount">Number of Summative Tests</label>
+                <select class="apg-select" id="fixSTCount">
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+
+              <div class="apg-field">
+                <label class="apg-label">Existing Summative Test Points</label>
+                <div id="fixSTInputs" class="apg-stgrid"></div>
+                <small class="apg-helper">Enter the existing ST points. APG will preserve the original ST proportions whenever possible.</small>
+              </div>
+
+              <div style="margin-top:6px">
+                <button class="apg-btn" onclick="fixPlan()">Suggest Revisions</button>
+              </div>
+            </div>
+
+            <div class="apg-card apg-result-card">
+              <h3 class="apg-card-title">Suggested Revision</h3>
+              <div id="fixResults">
+                <p class="apg-placeholder">Suggested compliant plan will appear here.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         TOS BUILDER
+    ══════════════════════════════════════════ -->
+    <section class="apg-page" id="apgTOS">
+      <div class="section">
+        <div class="section-header">
+          <p class="section-eyebrow">Table of Specifications</p>
+          <h2 class="section-title"><span>TOS Builder</span></h2>
+          <p class="section-intro">
+            Generate a Table of Specifications using competencies, allotted instructional
+            days, and the desired number of items or points.
+          </p>
+        </div>
+
+        <div class="apg-card">
+          <h3 class="apg-card-title">Competency Allocation</h3>
+          <p class="apg-card-sub">Add each competency along with the number of instructional days allotted to it.</p>
+
+          <div class="apg-table-wrap">
+            <table class="apg-table">
+              <thead>
+                <tr>
+                  <th>Competency</th>
+                  <th>Allotted Days</th>
+                </tr>
+              </thead>
+              <tbody id="competencyContainer">
+                <tr class="competency-row">
+                  <td><input type="text" class="apg-input competency-input" placeholder="Enter competency" onkeydown="handleCompetencyEnter(event)"></td>
+                  <td><input type="number" class="apg-input days-input" min="1" placeholder="Days" onkeydown="handleCompetencyEnter(event)"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="apg-table-actions">
+            <button class="apg-btn-outline" type="button" onclick="addCompetencyRow()">+ Add Competency</button>
+            <button class="apg-btn-outline" type="button" onclick="removeCompetencyRow()">&minus; Remove Last Competency</button>
+          </div>
+
+          <hr style="border:none;border-top:1px solid var(--gray-200);margin:26px 0">
+
+          <h3 class="apg-card-title">Desired Output</h3>
+
+          <div class="apg-field">
+            <label class="apg-label" for="desiredOutput">Output Type</label>
+            <select class="apg-select" id="desiredOutput">
+              <option value="items">Items</option>
+              <option value="points">Points</option>
+            </select>
+          </div>
+
+          <div class="apg-field">
+            <label class="apg-label" for="totalDesiredOutput">Total Desired Output</label>
+            <input class="apg-input" type="number" id="totalDesiredOutput" min="1" placeholder="e.g., 50 items or 100 points">
+          </div>
+
+          <div style="margin-top:6px">
+            <button class="apg-btn" onclick="generateTOS()">Generate TOS</button>
+          </div>
+        </div>
+
+        <div class="apg-card apg-result-card">
+          <h3 class="apg-card-title">TOS Output</h3>
+          <div id="tosResults">
+            <p class="apg-placeholder">Generated Table of Specifications will appear here.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         ABOUT
+    ══════════════════════════════════════════ -->
+    <section class="apg-page" id="apgAbout">
+      <div class="section">
+        <div class="section-header">
+          <p class="section-eyebrow">Reference</p>
+          <h2 class="section-title"><span>About This Guide</span></h2>
+        </div>
+
+        <div class="apg-about-grid">
+
+          <div class="apg-card apg-about-card">
+            <h3>Basis</h3>
+            <p>The Assessment Planning Guide (APG) is anchored on Department Order No. 015 and related assessment guidelines governing the development and administration of classroom assessments.</p>
+          </div>
+
+          <div class="apg-card apg-about-card">
+            <h3>Purpose</h3>
+            <p>APG assists teachers in planning, reviewing, and improving assessment structures through practical computations and validation rules aligned with established policy requirements.</p>
+          </div>
+
+          <div class="apg-card apg-about-card is-wide">
+            <h3>Assessment Assumptions</h3>
+            <ul>
+              <li>Term Examination (TE) contributes 40% of the overall assessment.</li>
+              <li>Summative Tests (STs) contribute 60% of the overall assessment.</li>
+              <li>The Term Examination must contain at least 50 items and 50 points.</li>
+              <li>TE Points must be equal to or greater than TE Items.</li>
+              <li>The number of Summative Tests ranges from two (2) to four (4).</li>
+              <li>Each Summative Test must not exceed one-half of the Term Examination points.</li>
+            </ul>
+          </div>
+
+          <div class="apg-card apg-about-card apg-disclaimer is-wide">
+            <h3>Disclaimer</h3>
+            <p>APG is intended solely as a planning aid. It does not replace professional judgment, contextual decision-making, official policy interpretation, or the authority of the Department of Education.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── IT CONTACT BANNER ── -->
+    <div class="contact-banner">
+      <div class="contact-inner" role="complementary" aria-label="IT Assistance">
+        <div>
+          <p class="contact-label">Need Help?</p>
+          <p class="contact-msg">For assistance, please contact your in-house IT.</p>
+        </div>
+        <div class="contact-icon-wrap" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 18v-6a9 9 0 0118 0v6"/>
+            <path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3z"/>
+            <path d="M3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-cross" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <line x1="12" y1="2" x2="12" y2="22"/>
+          <line x1="5" y1="8" x2="19" y2="8"/>
+        </svg>
+      </div>
+      <p class="footer-school">MGC New Life Christian Academy</p>
+      <p class="footer-dept">Junior High School Department</p>
+      <div class="footer-divider" aria-hidden="true"></div>
+      <p class="footer-copy">JHS Launchpad &mdash; Assessment Planning Guide</p>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       ASSESSMENT PLANNING GUIDE — LOGIC
+       Ported from the standalone APG app (Code.gs / scripts.html),
+       computations unchanged, restyled to fit JHS Launchpad.
+  ══════════════════════════════════════════════════════════════ -->
+  <script>
+  (function () {
+    'use strict';
+
+    /* ── Top-level / sub-level tab switching ─────────────────────── */
+    window.showApgPage = function (pageId, btn) {
+      document.querySelectorAll('.apg-page').forEach(p => p.classList.remove('is-active'));
+      document.querySelectorAll('.apg-tab').forEach(b => b.classList.remove('is-active'));
+      document.getElementById(pageId)?.classList.add('is-active');
+      if (btn) btn.classList.add('is-active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    window.showApgModule = function (moduleId, btn) {
+      document.querySelectorAll('.apg-module').forEach(m => m.classList.remove('is-active'));
+      document.querySelectorAll('.apg-subnav-btn').forEach(b => b.classList.remove('is-active'));
+      document.getElementById(moduleId)?.classList.add('is-active');
+      if (btn) btn.classList.add('is-active');
+    };
+
+    window.toggleSuggestMode = function () {
+      const mode = document.querySelector('input[name="planStart"]:checked')?.value || 'te';
+      document.getElementById('teSuggestSection')?.classList.toggle('is-hidden', mode !== 'te');
+      document.getElementById('stSuggestSection')?.classList.toggle('is-hidden', mode !== 'st');
+      if (mode === 'st') generateSuggestSTInputs();
+    };
+
+    /* ── Dynamic ST input generators ─────────────────────────────── */
+    window.generateSuggestSTInputs = function () {
+      const count = Number(document.getElementById('stSuggestCount')?.value || 2);
+      const container = document.getElementById('suggestSTInputs');
+      if (!container) return;
+      container.innerHTML = '';
+      for (let i = 1; i <= count; i++) {
+        container.innerHTML += `
+          <div class="apg-field">
+            <label class="apg-label">ST ${i} Points</label>
+            <input class="apg-input suggest-st-point" type="number" min="1" placeholder="Enter ST ${i} points">
+          </div>`;
+      }
+    };
+
+    window.generateCheckSTInputs = function () {
+      const count = Number(document.getElementById('checkSTCount')?.value || 2);
+      const container = document.getElementById('checkSTInputs');
+      if (!container) return;
+      container.innerHTML = '';
+      for (let i = 1; i <= count; i++) {
+        container.innerHTML += `
+          <div class="apg-field">
+            <label class="apg-label">ST ${i} Points</label>
+            <input class="apg-input check-st-point" type="number" min="0">
+          </div>`;
+      }
+    };
+
+    window.generateFixSTInputs = function () {
+      const count = Number(document.getElementById('fixSTCount')?.value || 2);
+      const container = document.getElementById('fixSTInputs');
+      if (!container) return;
+      container.innerHTML = '';
+      for (let i = 1; i <= count; i++) {
+        container.innerHTML += `
+          <div class="apg-field">
+            <label class="apg-label">ST ${i} Points</label>
+            <input class="apg-input fix-st-point" type="number" min="0">
+          </div>`;
+      }
+    };
+
+    /* ── Helpers ──────────────────────────────────────────────────── */
+    function round2(value) { return Number(Number(value).toFixed(2)); }
+    function approx(a, b, tolerance) { return Math.abs(a - b) <= (tolerance || 0.01); }
+
+    var ICON_CHECK = '<svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>';
+    var ICON_WARN  = '<svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>';
+    var ICON_X     = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>';
+
+    function statusBox(kind, title, bodyHtml) {
+      var cls = kind === 'ideal' ? 'is-ideal' : (kind === 'acceptable' ? 'is-acceptable' : 'is-error');
+      var icon = kind === 'ideal' ? ICON_CHECK : (kind === 'acceptable' ? ICON_WARN : ICON_X);
+      return '<div class="apg-status ' + cls + '">' +
+               '<div class="apg-status-head">' + icon + title + '</div>' +
+               bodyHtml +
+             '</div>';
+    }
+
+    function renderStatus(targetId, status, issues) {
+      var kind = status === 'NEEDS REVISION' ? 'error' : (status === 'IDEAL' || status === 'RECOMMENDED' ? 'ideal' : 'acceptable');
+      var body = '<ul>' + issues.map(function (i) { return '<li>' + i + '</li>'; }).join('') + '</ul>';
+      document.getElementById(targetId).innerHTML = statusBox(kind, status, body);
+    }
+
+    /* ── SUGGEST A PLAN ───────────────────────────────────────────── */
+    window.generatePlan = function () {
+      var mode = document.querySelector('input[name="planStart"]:checked')?.value || 'te';
+      if (mode === 'te') generateTEFirstPlan(); else generateSTFirstPlan();
+    };
+
+    function generateTEFirstPlan() {
+      var teItems = Number(document.getElementById('teItems').value);
+      var tePoints = Number(document.getElementById('tePoints').value);
+      var stCount = Number(document.getElementById('suggestSTCount').value);
+
+      if (teItems < 50) return renderStatus('suggestResults', 'NEEDS REVISION', ['TE Items must be at least 50.']);
+      if (tePoints < 50) return renderStatus('suggestResults', 'NEEDS REVISION', ['TE Points must be at least 50.']);
+      if (tePoints < teItems) return renderStatus('suggestResults', 'NEEDS REVISION', ['TE Points must be equal to or greater than TE Items.']);
+
+      var idealTotal = tePoints / 0.40;
+      var idealSTTotal = idealTotal * 0.60;
+      var idealShare = idealSTTotal / stCount;
+
+      var results = document.getElementById('suggestResults');
+
+      if (idealShare <= tePoints / 2) {
+        var rows = '<div class="apg-result-row"><strong>TE</strong><span>' + tePoints + ' pts</span></div>';
+        for (var i = 1; i <= stCount; i++) {
+          rows += '<div class="apg-result-row"><strong>ST ' + i + '</strong><span>' + round2(idealShare) + ' pts</span></div>';
+        }
+        results.innerHTML = statusBox('ideal', 'RECOMMENDED', '<p>Preferred 40&ndash;60 distribution achieved.</p><div class="apg-result-list">' + rows + '</div>');
+        return;
+      }
+
+      var maxSTShare = tePoints / 2;
+      var maxSTTotal = maxSTShare * stCount;
+      var acceptableSTPercent = (maxSTTotal / (tePoints + maxSTTotal)) * 100;
+
+      if (acceptableSTPercent >= 50 && acceptableSTPercent <= 60) {
+        var rows2 = '<div class="apg-result-row"><strong>TE</strong><span>' + tePoints + ' pts</span></div>';
+        for (var j = 1; j <= stCount; j++) {
+          rows2 += '<div class="apg-result-row"><strong>ST ' + j + '</strong><span>' + round2(maxSTShare) + ' pts</span></div>';
+        }
+        results.innerHTML = statusBox('ideal', 'RECOMMENDED', '<div class="apg-result-list">' + rows2 + '</div>');
+        return;
+      }
+
+      renderStatus('suggestResults', 'NEEDS REVISION', ['Increase TE Points or adjust the number of Summative Tests.']);
+    }
+
+    function generateSTFirstPlan() {
+      var stValues = [].slice.call(document.querySelectorAll('.suggest-st-point')).map(function (input) { return Number(input.value || 0); });
+      var stTotal = stValues.reduce(function (sum, value) { return sum + value; }, 0);
+
+      var tePoints = stTotal * (40 / 60);
+
+      if (tePoints >= 50 && stValues.every(function (st) { return st <= tePoints / 2; })) {
+        return renderSTRecommendation(stTotal, tePoints);
+      }
+
+      for (var stPercent = 59; stPercent >= 50; stPercent--) {
+        var tePercent = 100 - stPercent;
+        tePoints = stTotal * (tePercent / stPercent);
+        if (tePoints >= 50 && stValues.every(function (st) { return st <= tePoints / 2; })) {
+          return renderSTRecommendation(stTotal, tePoints);
+        }
+      }
+
+      renderStatus('suggestResults', 'NEEDS REVISION', ['Increase the total ST points or adjust the ST distribution.']);
+    }
+
+    function renderSTRecommendation(stTotal, tePoints) {
+      var body = '<div class="apg-result-list">' +
+        '<div class="apg-result-row"><strong>Suggested TE Items</strong><span>50</span></div>' +
+        '<div class="apg-result-row"><strong>Suggested TE Points</strong><span>' + round2(tePoints) + ' pts</span></div>' +
+        '</div><p style="margin-top:10px">You may retain your current Summative Tests.</p>';
+      document.getElementById('suggestResults').innerHTML = statusBox('ideal', 'RECOMMENDED', body);
+    }
+
+    /* ── CHECK MY PLAN ────────────────────────────────────────────── */
+    window.checkPlan = function () {
+      var teItems = Number(document.getElementById('checkTEItems').value);
+      var tePoints = Number(document.getElementById('checkTEPoints').value);
+      var stCount = Number(document.getElementById('checkSTCount').value);
+      var stValues = [].slice.call(document.querySelectorAll('#checkSTInputs .check-st-point')).map(function (input) { return Number(input.value || 0); });
+
+      var issues = [];
+      if (teItems < 50) issues.push('TE Items must be at least 50.');
+      if (tePoints < 50) issues.push('TE Points must be at least 50.');
+      if (tePoints < teItems) issues.push('TE Points must be equal to or greater than TE Items.');
+      if (stCount < 2 || stCount > 4) issues.push('Number of Summative Tests must be between 2 and 4.');
+
+      stValues.forEach(function (st, index) {
+        if (st > tePoints / 2) issues.push('ST ' + (index + 1) + ' exceeds TE Points \u00F7 2.');
+      });
+
+      var stTotal = stValues.reduce(function (sum, value) { return sum + value; }, 0);
+      var total = tePoints + stTotal;
+      var tePercent = total > 0 ? (tePoints / total) * 100 : 0;
+      var stPercent = total > 0 ? (stTotal / total) * 100 : 0;
+
+      if (issues.length > 0) {
+        return renderStatus('checkResults', 'NEEDS REVISION', issues);
+      }
+
+      var statsHtml = '<div class="apg-status-stats">' +
+        '<div class="apg-stat"><span class="apg-stat-label">TE Share</span><span class="apg-stat-value">' + round2(tePercent) + '%</span></div>' +
+        '<div class="apg-stat"><span class="apg-stat-label">ST Share</span><span class="apg-stat-value">' + round2(stPercent) + '%</span></div>' +
+      '</div>';
+
+      var checkResults = document.getElementById('checkResults');
+
+      if (approx(tePercent, 40) && approx(stPercent, 60)) {
+        checkResults.innerHTML = statusBox('ideal', 'IDEAL', '<p>This plan reflects the preferred 40&ndash;60 distribution.</p>' + statsHtml);
+        return;
+      }
+
+      if (tePercent >= 40 && tePercent <= 50 && stPercent >= 50 && stPercent <= 60) {
+        checkResults.innerHTML = statusBox('acceptable', 'ACCEPTABLE', '<p>This plan falls within the acceptable assessment range.</p>' + statsHtml);
+        return;
+      }
+
+      checkResults.innerHTML = statusBox('error', 'NEEDS REVISION', '<p>The assessment distribution falls outside the acceptable range.</p>' + statsHtml);
+    };
+
+    /* ── FIX MY PLAN ──────────────────────────────────────────────── */
+    window.fixPlan = function () {
+      var tePoints = Number(document.getElementById('fixTEPoints').value);
+      var results = document.getElementById('fixResults');
+
+      if (tePoints < 50) {
+        results.innerHTML = statusBox('error', 'NEEDS REVISION', '<p>TE Points must be at least 50.</p>');
+        return;
+      }
+
+      var stValues = [].slice.call(document.querySelectorAll('#fixSTInputs .fix-st-point')).map(function (input) { return Number(input.value || 0); });
+
+      if (stValues.length === 0 || stValues.every(function (st) { return st === 0; })) {
+        results.innerHTML = statusBox('error', 'NEEDS REVISION', '<p>Please enter valid Summative Test values.</p>');
+        return;
+      }
+
+      var maxAllowed = tePoints / 2;
+      var largestST = Math.max.apply(null, stValues);
+      var scaleFactor = Math.min(1, maxAllowed / largestST);
+      var revisedSTs = stValues.map(function (st) { return round2(st * scaleFactor); });
+      var revisedSTTotal = revisedSTs.reduce(function (sum, value) { return sum + value; }, 0);
+      var total = tePoints + revisedSTTotal;
+      var tePercent = (tePoints / total) * 100;
+      var stPercent = (revisedSTTotal / total) * 100;
+
+      var kind, status;
+      if (approx(tePercent, 40) && approx(stPercent, 60)) { kind = 'ideal'; status = 'IDEAL'; }
+      else if (tePercent >= 40 && tePercent <= 50 && stPercent >= 50 && stPercent <= 60) { kind = 'acceptable'; status = 'ACCEPTABLE'; }
+      else { kind = 'error'; status = 'NEEDS REVISION'; }
+
+      var originalSTTotal = stValues.reduce(function (sum, value) { return sum + value; }, 0);
+
+      var statsHtml = '<div class="apg-status-stats">' +
+        '<div class="apg-stat"><span class="apg-stat-label">Original ST Total</span><span class="apg-stat-value">' + round2(originalSTTotal) + '</span></div>' +
+        '<div class="apg-stat"><span class="apg-stat-label">Revised ST Total</span><span class="apg-stat-value">' + round2(revisedSTTotal) + '</span></div>' +
+        '<div class="apg-stat"><span class="apg-stat-label">Scale Applied</span><span class="apg-stat-value">' + round2(scaleFactor * 100) + '%</span></div>' +
+        '<div class="apg-stat"><span class="apg-stat-label">TE / ST</span><span class="apg-stat-value">' + round2(tePercent) + '% / ' + round2(stPercent) + '%</span></div>' +
+      '</div>';
+
+      var rowsHtml = '<div class="apg-result-list">';
+      revisedSTs.forEach(function (st, index) {
+        rowsHtml += '<div class="apg-result-row"><strong>ST ' + (index + 1) + '</strong><span>' + st + ' pts</span></div>';
+      });
+      rowsHtml += '</div>';
+
+      var body = '<p>Intent-preserving revision applied.</p>' + statsHtml + rowsHtml;
+
+      if (status === 'NEEDS REVISION') {
+        body += '<p style="margin-top:10px">No compliant revision could be generated while preserving the original ST structure. Consider increasing TE Points or redesigning the Summative Tests.</p>';
+      }
+
+      results.innerHTML = statusBox(kind, status, body);
+    };
+
+    /* ── TOS BUILDER ──────────────────────────────────────────────── */
+    window.addCompetencyRow = function () {
+      var container = document.getElementById('competencyContainer');
+      if (!container) return;
+      container.insertAdjacentHTML('beforeend',
+        '<tr class="competency-row">' +
+          '<td><input type="text" class="apg-input competency-input" placeholder="Enter competency" onkeydown="handleCompetencyEnter(event)"></td>' +
+          '<td><input type="number" class="apg-input days-input" min="1" placeholder="Days" onkeydown="handleCompetencyEnter(event)"></td>' +
+        '</tr>'
+      );
+    };
+
+    window.removeCompetencyRow = function () {
+      var container = document.getElementById('competencyContainer');
+      if (!container) return;
+      var rows = container.querySelectorAll('.competency-row');
+      if (rows.length <= 1) { alert('At least one competency is required.'); return; }
+      rows[rows.length - 1].remove();
+    };
+
+    window.handleCompetencyEnter = function (event) {
+      if (event.key !== 'Enter') return;
+      event.preventDefault();
+      var currentRow = event.target.closest('.competency-row');
+      var rows = Array.prototype.slice.call(document.querySelectorAll('.competency-row'));
+      var isLastRow = rows[rows.length - 1] === currentRow;
+      if (isLastRow) {
+        addCompetencyRow();
+        var newRows = document.querySelectorAll('.competency-row');
+        var newestRow = newRows[newRows.length - 1];
+        newestRow.querySelector('.competency-input')?.focus();
+      }
+    };
+
+    window.generateTOS = function () {
+      var competencies = Array.prototype.slice.call(document.querySelectorAll('.competency-input')).map(function (input) { return input.value.trim(); });
+      var days = Array.prototype.slice.call(document.querySelectorAll('.days-input')).map(function (input) { return Number(input.value); });
+      var outputType = document.getElementById('desiredOutput').value;
+      var totalOutput = Number(document.getElementById('totalDesiredOutput').value);
+      var results = document.getElementById('tosResults');
+
+      if (totalOutput < 1) {
+        results.innerHTML = statusBox('error', 'NEEDS REVISION', '<p>Please enter a valid total desired output.</p>');
+        return;
+      }
+
+      for (var i = 0; i < competencies.length; i++) {
+        if (!competencies[i]) {
+          results.innerHTML = statusBox('error', 'NEEDS REVISION', '<p>Competency ' + (i + 1) + ' cannot be blank.</p>');
+          return;
+        }
+        if (!days[i] || days[i] < 1) {
+          results.innerHTML = statusBox('error', 'NEEDS REVISION', '<p>Competency &ldquo;' + competencies[i] + '&rdquo; must have at least 1 day.</p>');
+          return;
+        }
+      }
+
+      var totalDays = days.reduce(function (sum, day) { return sum + day; }, 0);
+
+      var allocations = competencies.map(function (competency, index) {
+        var raw = (days[index] / totalDays) * totalOutput;
+        return { competency: competency, days: days[index], raw: raw, floor: Math.floor(raw), remainder: raw - Math.floor(raw) };
+      });
+
+      var allocated = allocations.reduce(function (sum, item) { return sum + item.floor; }, 0);
+      var remaining = totalOutput - allocated;
+
+      allocations.sort(function (a, b) { return b.remainder - a.remainder; });
+      for (var r = 0; r < remaining; r++) { allocations[r].floor++; }
+
+      allocations.sort(function (a, b) { return competencies.indexOf(a.competency) - competencies.indexOf(b.competency); });
+
+      var html = '<div class="apg-table-wrap"><table class="apg-table"><thead><tr>' +
+        '<th>Competency</th><th>Days</th><th>' + (outputType === 'items' ? 'Items' : 'Points') + '</th>' +
+        '</tr></thead><tbody>';
+
+      var finalDays = 0, finalAllocation = 0;
+      allocations.forEach(function (item) {
+        html += '<tr><td data-label="Competency">' + item.competency + '</td><td data-label="Days">' + item.days + '</td><td data-label="' + (outputType === 'items' ? 'Items' : 'Points') + '">' + item.floor + '</td></tr>';
+        finalDays += item.days;
+        finalAllocation += item.floor;
+      });
+
+      html += '</tbody><tfoot><tr><th>TOTAL</th><th>' + finalDays + '</th><th>' + finalAllocation + '</th></tr></tfoot></table></div>' +
+        '<p style="margin-top:14px;font-size:13px;color:var(--gray-600)">Allocations were computed proportionally based on allotted instructional days using the Largest Remainder Method.</p>';
+
+      results.innerHTML = html;
+    };
+
+    /* ── Initialization ──────────────────────────────────────────── */
+    function init() {
+      toggleSuggestMode();
+      generateSuggestSTInputs();
+      generateCheckSTInputs();
+      generateFixSTInputs();
+
+      document.getElementById('checkSTCount')?.addEventListener('change', generateCheckSTInputs);
+      document.getElementById('fixSTCount')?.addEventListener('change', generateFixSTInputs);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+
+  }());
+  </script>
+
+</body>
+</html>
