@@ -187,6 +187,7 @@
       max-width: 1120px; margin: 0 auto;
     }
 
+
     /* ─────────────────────────────────────────────
        EVENTS THIS WEEK
     ───────────────────────────────────────────── */
@@ -196,85 +197,136 @@
       color: var(--gray-400); letter-spacing: 0.01em;
     }
 
-    /* Day-grouped grid */
-    .events-days-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      align-items: start;
+    .events-week-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
-    /* One day block */
-    .day-block {
+    .events-pair {
       background: var(--surface);
       border: 1px solid var(--gray-200);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
+      border-radius: var(--radius-lg);
       overflow: hidden;
-    }
-    .day-block.is-today {
-      border-color: var(--green-200);
-      box-shadow: var(--shadow-sm), 0 0 0 3px rgba(28,122,66,0.08);
+      box-shadow: var(--shadow-sm);
     }
 
-    /* Day block header */
-    .day-block-head {
-      display: flex; align-items: center; gap: 12px;
-      padding: 12px 16px;
+    .events-pair-head,
+    .events-pair-events {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .events-pair-head {
       background: var(--gray-100);
       border-bottom: 1px solid var(--gray-200);
     }
-    .day-block.is-today .day-block-head {
+
+    .events-day-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      padding: 12px 14px;
+      border-right: 1px solid var(--gray-200);
+    }
+
+    .events-pair-head .events-day-head:last-child,
+    .events-pair-events .events-day-events:last-child {
+      border-right: none;
+    }
+
+    .events-day-head.is-today {
       background: var(--green-50);
-      border-bottom-color: var(--green-100);
     }
 
-    /* Date chip inside the header */
-    .day-date-chip {
-      display: flex; flex-direction: column; align-items: center;
-      justify-content: center; width: 50px; height: 50px;
-      flex-shrink: 0; background: var(--green-900);
-      border-radius: var(--radius-sm); gap: 1px;
-    }
-    .day-block.is-today .day-date-chip { background: var(--green-700); }
-    .day-date-chip .chip-dow {
-      font-size: 8px; font-weight: 700; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--green-400);
-    }
-    .day-date-chip .chip-num {
-      font-family: var(--font-serif); font-size: 22px; font-weight: 700;
-      color: #fff; line-height: 1;
-    }
-    .day-date-chip .chip-mon {
-      font-size: 8px; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: rgba(255,255,255,0.4);
+    .events-day-chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+      background: var(--green-900);
+      border-radius: var(--radius-sm);
+      gap: 1px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
 
-    /* Text area next to the chip */
-    .day-head-info {
-      flex: 1; min-width: 0;
-      display: flex; flex-direction: column; gap: 2px;
-    }
-    .day-head-full {
-      display: block; font-size: 12.5px; font-weight: 600;
-      color: var(--gray-800); line-height: 1.2;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .day-event-count {
-      display: block; font-size: 10.5px;
-      color: var(--gray-400); font-weight: 500;
-    }
-    .day-today-tag {
-      display: inline-block; margin-top: 3px;
-      font-size: 8.5px; font-weight: 800; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--green-700);
-      background: var(--green-100); border: 1px solid var(--green-200);
-      border-radius: 20px; padding: 2px 8px; align-self: flex-start;
+    .events-day-chip .chip-dow {
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green-400);
     }
 
-    /* Event rows inside a day block */
+    .events-day-chip .chip-num {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .events-day-chip .chip-mon {
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.42);
+    }
+
+    .events-day-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .events-day-title {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--gray-800);
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .events-day-count {
+      display: block;
+      font-size: 10.5px;
+      color: var(--gray-400);
+      font-weight: 500;
+    }
+
+    .events-day-tag {
+      display: inline-block;
+      margin-top: 3px;
+      font-size: 8.5px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      background: var(--green-100);
+      border: 1px solid var(--green-200);
+      border-radius: 20px;
+      padding: 2px 8px;
+      align-self: flex-start;
+    }
+
+    .events-day-events {
+      min-height: 100%;
+      border-right: 1px solid var(--gray-100);
+      background: #fff;
+    }
+
     .day-event-row {
-      padding: 10px 16px 10px 13px;
+      padding: 10px 14px 10px 13px;
       border-left: 3px solid transparent;
       transition: background 0.15s ease, border-left-color 0.15s ease;
     }
@@ -293,6 +345,12 @@
       font-weight: 500; display: flex; align-items: center; gap: 4px;
     }
     .day-event-meta { font-size: 10.5px; color: var(--gray-400); line-height: 1.4; }
+
+    .day-events-empty {
+      padding: 16px 14px;
+      font-size: 12px;
+      color: var(--gray-400);
+    }
 
     /* Empty / Error / Loading states */
     .events-state {
@@ -316,7 +374,6 @@
       border-radius: 50%; animation: spin 0.75s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-
     /* ─────────────────────────────────────────────
        RESOURCE CARDS
     ───────────────────────────────────────────── */
@@ -834,7 +891,7 @@
       var pht   = nowPHT();
       var today = midnight(pht);
       var dow   = today.getDay();
-      var delta = (dow === 0) ? -6 : (1 - dow); /* back to Monday */
+      var delta = -dow; /* back to Sunday */
       var wStart = new Date(today); wStart.setDate(today.getDate() + delta);
       var wEnd   = new Date(wStart); wEnd.setDate(wStart.getDate() + 6);
       return { today: today, weekStart: wStart, weekEnd: wEnd };
@@ -1008,14 +1065,15 @@
                  .filter(function(b){ return b.length > 0; });
     }
 
-    /* ── Build the day-grouped data structure ────────────────────── */
+
+    /* ── Build the Sunday-to-Saturday weekly structure ─────────── */
     function parseHorizontalCalendar(rows, weekStart, weekEnd) {
       if (!rows.length) return [];
 
-      var header    = rows[0];
-      var colCount  = header.length;
-      var result    = [];
-      var seen      = {};
+      var header   = rows[0];
+      var colCount = header.length;
+      var seen     = {};
+      var eventsByDay = {};
 
       for (var col = 0; col < colCount; col++) {
         var rawDate = header[col];
@@ -1027,6 +1085,7 @@
         var d   = midnight(parsed);
         var key = d.getTime();
         if (seen[key]) continue; /* skip duplicate date columns */
+        seen[key] = true;
 
         if (d < weekStart || d > weekEnd) continue;
 
@@ -1035,6 +1094,7 @@
         for (var row = 1; row < rows.length; row++) {
           var cell = (rows[row][col] || '').trim();
           if (!cell) continue;
+
           /* Split in case one cell contains multiple events */
           var blocks = splitEventBlocks(cell);
           for (var b = 0; b < blocks.length; b++) {
@@ -1042,22 +1102,29 @@
           }
         }
 
-        if (!eventTexts.length) { seen[key] = true; continue; }
-
         var events = [];
         for (var t = 0; t < eventTexts.length; t++) {
           var ev = parseEventText(eventTexts[t]);
           if (ev) events.push(ev);
         }
 
-        if (events.length > 0) {
-          result.push({ date: d, events: events });
-          seen[key] = true;
-        }
+        eventsByDay[key] = events;
       }
 
-      result.sort(function(a, b){ return a.date - b.date; });
-      return result;
+      /* Build every day from Sunday to Saturday so the layout stays complete */
+      var days = [];
+      var cur = new Date(weekStart);
+      while (cur <= weekEnd) {
+        var curMid = midnight(cur);
+        var dayKey = curMid.getTime();
+        days.push({
+          date: new Date(curMid),
+          events: eventsByDay[dayKey] || []
+        });
+        cur.setDate(cur.getDate() + 1);
+      }
+
+      return days;
     }
 
     /* ── HTML helpers ────────────────────────────────────────────── */
@@ -1080,14 +1147,12 @@
     /* Inline location pin SVG */
     var PIN = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-top:-1px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>';
 
-    function renderDayBlock(day, today) {
-      var isToday   = (day.date.toDateString() === today.toDateString());
-      var evCount   = day.events.length;
-      var countText = (evCount === 1) ? '1 event' : (evCount + ' events');
-      var fullDay   = FULL_DAYS[day.date.getDay()] + ', '
-                    + FULL_MONS[day.date.getMonth()] + ' ' + day.date.getDate();
+    function renderEventRows(events) {
+      if (!events || !events.length) {
+        return '<div class="day-events-empty">No scheduled events.</div>';
+      }
 
-      var evHtml = day.events.map(function(ev) {
+      return events.map(function(ev) {
         var metaLine = '';
         if (ev.inCharge && ev.venue) {
           metaLine = PIN + ' ' + esc(ev.venue) + '&nbsp;&nbsp;&middot;&nbsp;&nbsp;' + esc(ev.inCharge);
@@ -1107,26 +1172,57 @@
           '</div>'
         ].filter(Boolean).join('\n');
       }).join('\n');
+    }
+
+    function renderDayHead(day, today) {
+      var isToday   = (day.date.toDateString() === today.toDateString());
+      var evCount   = day.events.length;
+      var countText = (evCount === 1) ? '1 event' : (evCount + ' events');
+      var fullDay   = FULL_DAYS[day.date.getDay()] + ', '
+                    + FULL_MONS[day.date.getMonth()] + ' ' + day.date.getDate();
 
       return [
-        '<div class="day-block' + (isToday ? ' is-today' : '') + '">',
-        '  <div class="day-block-head">',
-        '    <div class="day-date-chip" aria-hidden="true">',
-        '      <span class="chip-dow">' + DOW[day.date.getDay()] + '</span>',
-        '      <span class="chip-num">' + day.date.getDate()      + '</span>',
-        '      <span class="chip-mon">' + MONS[day.date.getMonth()]+'</span>',
-        '    </div>',
-        '    <div class="day-head-info">',
-        '      <span class="day-head-full">' + esc(fullDay) + '</span>',
-        '      <span class="day-event-count">' + esc(countText) + '</span>',
-        isToday ? '      <span class="day-today-tag">Today</span>' : '',
-        '    </div>',
+        '<div class="events-day-head' + (isToday ? ' is-today' : '') + '">',
+        '  <div class="events-day-chip" aria-hidden="true">',
+        '    <span class="chip-dow">' + DOW[day.date.getDay()] + '</span>',
+        '    <span class="chip-num">' + day.date.getDate() + '</span>',
+        '    <span class="chip-mon">' + MONS[day.date.getMonth()] + '</span>',
         '  </div>',
-        '  <div class="day-events-list" role="list">',
-        evHtml,
+        '  <div class="events-day-info">',
+        '    <span class="events-day-title">' + esc(fullDay) + '</span>',
+        '    <span class="events-day-count">' + esc(countText) + '</span>',
+        isToday ? '    <span class="events-day-tag">Today</span>' : '',
         '  </div>',
         '</div>'
       ].filter(Boolean).join('\n');
+    }
+
+    function renderDayEvents(day) {
+      return [
+        '<div class="events-day-events" role="list">',
+        renderEventRows(day.events),
+        '</div>'
+      ].join('\n');
+    }
+
+    function renderWeekPair(leftDay, rightDay, today) {
+      var rightHead = rightDay ? renderDayHead(rightDay, today)
+                               : '<div class="events-day-head" aria-hidden="true"></div>';
+      var rightEvents = rightDay ? renderDayEvents(rightDay)
+                                 : '<div class="events-day-events" aria-hidden="true"></div>';
+
+      return [
+        '<section class="events-pair" aria-label="Weekly events pair">',
+        '  <div class="events-pair-head">',
+        renderDayHead(leftDay, today),
+        rightHead,
+        '  </div>',
+        '  <div class="events-pair-events">',
+        renderDayEvents(leftDay),
+        rightEvents,
+        '  </div>',
+        '</section>'
+      ].join('\n');
     }
 
     function renderEmpty(msg, sub) {
@@ -1181,25 +1277,30 @@
         if (!rows.length) throw new Error('Empty sheet');
 
         var dayEvents = parseHorizontalCalendar(rows, weekStart, weekEnd);
+        var hasEvents = dayEvents.some(function(day) { return day.events && day.events.length > 0; });
 
-        if (!dayEvents.length) {
+        if (!hasEvents) {
           container.innerHTML = renderEmpty(
             'No events scheduled for this week.',
             'Events added to the School Calendar will appear here automatically.'
           );
         } else {
+          var pairs = [];
+          for (var i = 0; i < dayEvents.length; i += 2) {
+            pairs.push(renderWeekPair(dayEvents[i], dayEvents[i + 1], today));
+          }
+
           container.innerHTML =
-            '<div class="events-days-grid">' +
-            dayEvents.map(function(d){ return renderDayBlock(d, today); }).join('\n') +
+            '<div class="events-week-list">' +
+            pairs.join('\n') +
             '</div>';
         }
 
       } catch (err) {
-        console.warn('[JHS Launchpad \u2014 Events widget]', err);
+        console.warn('[JHS Launchpad — Events widget]', err);
         container.innerHTML = renderError();
       }
     }
-
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', init);
     } else {
