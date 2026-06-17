@@ -197,230 +197,62 @@
       color: var(--gray-400); letter-spacing: 0.01em;
     }
 
-    .events-week-grid {
+    .cal-week-grid {
       display: grid;
-      grid-template-columns: repeat(7, minmax(0, 1fr));
-      gap: 8px;
-      align-items: start;
+      grid-template-columns: repeat(7, minmax(128px, 1fr));
+      gap: 8px; overflow-x: auto; padding-bottom: 4px;
     }
-
-    .events-day-col {
-      min-width: 0;
-      background: var(--surface);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-      min-height: 570px;
+    .cal-col {
+      display: flex; flex-direction: column;
+      background: var(--surface); border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md); overflow: hidden;
+      box-shadow: var(--shadow-sm); min-height: 160px;
     }
-
-    .events-day-col.is-weekend {
-      background: #fff;
+    .cal-col.is-today {
+      border-color: var(--green-200);
+      box-shadow: var(--shadow-sm), 0 0 0 3px rgba(28,122,66,0.08);
     }
-
-    .events-day-head {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      min-height: 88px;
-      padding: 12px 8px 10px;
-      text-align: center;
-      border-bottom: 1px solid var(--gray-200);
-      background: linear-gradient(180deg, var(--green-900) 0%, var(--green-950) 100%);
+    .cal-col-head {
+      display: flex; flex-direction: column;
+      align-items: center; padding: 14px 6px 13px; gap: 2px; flex-shrink: 0;
     }
-
-    .events-day-col.is-weekend .events-day-head {
-      background: #f5f7fb;
+    .cal-col.has-events .cal-col-head { background: var(--green-900); }
+    .cal-col.is-today   .cal-col-head { background: var(--green-700); }
+    .cal-col.is-empty   .cal-col-head { background: var(--gray-100); border-bottom: 1px solid var(--gray-200); }
+    .cal-dow { font-size: 8.5px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; }
+    .cal-col.has-events .cal-dow { color: var(--green-400); }
+    .cal-col.is-empty   .cal-dow { color: var(--gray-400); }
+    .cal-day-num { font-family: var(--font-serif); font-size: 30px; font-weight: 700; line-height: 1; }
+    .cal-col.has-events .cal-day-num { color: #fff; }
+    .cal-col.is-empty   .cal-day-num { color: var(--gray-400); }
+    .cal-month-lbl { font-size: 8px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+    .cal-col.has-events .cal-month-lbl { color: rgba(255,255,255,0.35); }
+    .cal-col.is-empty   .cal-month-lbl { color: var(--gray-400); }
+    .cal-today-badge {
+      margin-top: 5px; font-size: 7px; font-weight: 900; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--amber-400);
+      background: rgba(232,168,26,0.18); border: 1px solid rgba(232,168,26,0.35);
+      border-radius: 20px; padding: 2px 7px;
     }
-
-    .events-day-col.is-today .events-day-head {
-      background: linear-gradient(180deg, var(--green-700) 0%, var(--green-600) 100%);
-      border-bottom-color: rgba(255,255,255,0.12);
-    }
-
-    .events-day-chip {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1px;
-      width: 52px;
-      height: 52px;
-      border-radius: var(--radius-sm);
-    }
-
-    .events-day-col:not(.is-weekend):not(.is-today) .events-day-chip {
-      background: rgba(255,255,255,0.06);
-    }
-
-    .events-day-col.is-today .events-day-chip {
-      background: rgba(255,255,255,0.08);
-    }
-
-    .events-day-col.is-weekend .events-day-chip {
-      background: transparent;
-    }
-
-    .events-day-chip .chip-dow {
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--green-400);
-    }
-
-    .events-day-col.is-weekend .events-day-chip .chip-dow {
-      color: var(--gray-400);
-    }
-
-    .events-day-chip .chip-num {
-      font-family: var(--font-serif);
-      font-size: 22px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1;
-    }
-
-    .events-day-col.is-weekend .events-day-chip .chip-num {
-      color: var(--gray-400);
-    }
-
-    .events-day-chip .chip-mon {
-      font-size: 8px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.42);
-    }
-
-    .events-day-col.is-weekend .events-day-chip .chip-mon {
-      color: var(--gray-400);
-    }
-
-    .events-day-info {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-      min-width: 0;
-    }
-
-    .events-day-title {
-      display: block;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.92);
-      line-height: 1.2;
-    }
-
-    .events-day-col.is-weekend .events-day-title {
-      color: var(--gray-500);
-    }
-
-    .events-day-count {
-      display: block;
-      font-size: 10px;
-      color: rgba(255,255,255,0.7);
-      font-weight: 500;
-    }
-
-    .events-day-col.is-weekend .events-day-count {
-      color: var(--gray-400);
-    }
-
-    .events-day-tag {
-      display: inline-block;
-      margin-top: 3px;
-      font-size: 8.5px;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--green-700);
-      background: var(--green-100);
-      border: 1px solid var(--green-200);
-      border-radius: 20px;
-      padding: 2px 8px;
-    }
-
-    .events-day-col.is-today .events-day-tag {
-      color: #fff;
-      background: rgba(255,255,255,0.14);
-      border-color: rgba(255,255,255,0.22);
-    }
-
-    .events-day-events {
-      flex: 1;
-      min-height: 0;
-      background: #fff;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .events-day-col.is-weekend .events-day-events {
-      background: #fff;
-    }
-
-    .day-event-row {
-      padding: 10px 12px 10px 12px;
-      border-left: 3px solid transparent;
+    .cal-col-body { flex: 1; display: flex; flex-direction: column; }
+    .cal-event {
+      padding: 9px 10px; border-left: 3px solid transparent;
       transition: background 0.15s ease, border-left-color 0.15s ease;
     }
-
-    .day-event-row:not(:last-child) {
-      border-bottom: 1px solid var(--gray-100);
+    .cal-event:not(:last-child) { border-bottom: 1px solid var(--gray-100); }
+    .cal-event:hover { background: var(--green-50); border-left-color: var(--green-600); }
+    .cal-event-title { font-size: 11px; font-weight: 600; color: var(--gray-800); line-height: 1.35; }
+    .cal-event-time {
+      font-size: 10px; color: var(--green-700); font-weight: 500; margin-top: 3px;
+      display: flex; align-items: center; gap: 3px;
     }
-
-    .day-event-row:hover {
-      background: var(--green-50);
-      border-left-color: var(--green-600);
-    }
-
-    .day-event-content {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .day-event-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--gray-800);
-      line-height: 1.35;
-    }
-
-    .day-event-time {
-      font-size: 11px;
-      color: var(--green-700);
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .day-event-meta {
-      font-size: 10.5px;
-      color: var(--gray-400);
-      line-height: 1.4;
-    }
-
-    .day-events-empty {
-      padding: 16px 12px;
-      font-size: 12px;
-      color: var(--gray-400);
-    }
-
-    /* Empty / Error / Loading states */
+    .cal-event-meta { font-size: 9.5px; color: var(--gray-400); margin-top: 2px; line-height: 1.4; }
+    .cal-no-events { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px 8px; }
+    .cal-no-events span { font-size: 18px; color: var(--gray-200); }
     .events-state {
       display: flex; flex-direction: column; align-items: center;
-      justify-content: center; gap: 12px;
-      padding: 52px 20px; background: var(--surface);
-      border: 1px dashed var(--gray-200);
+      justify-content: center; gap: 12px; padding: 52px 20px;
+      background: var(--surface); border: 1px dashed var(--gray-200);
       border-radius: var(--radius-md); text-align: center;
     }
     .events-state-icon {
@@ -429,8 +261,6 @@
     }
     .events-state-msg { font-size: 14px; font-weight: 600; color: var(--gray-600); }
     .events-state-sub { font-size: 12px; color: var(--gray-400); max-width: 340px; line-height: 1.6; }
-
-    /* Loading ring */
     .loading-ring {
       width: 28px; height: 28px;
       border: 2.5px solid var(--green-100); border-top-color: var(--green-700);
@@ -683,7 +513,6 @@
           <span class="events-week-range" id="events-week-range">—</span>
         </div>
       </div>
-
       <div id="events-container">
         <div class="events-state">
           <div class="loading-ring" aria-hidden="true"></div>
