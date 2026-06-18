@@ -436,12 +436,6 @@
     @media (max-width: 900px) {
       .grades-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    @media (max-width: 900px) {
-      .events-days-grid { grid-template-columns: repeat(2,1fr); }
-    }
-    @media (max-width: 700px) {
-      .events-days-grid { grid-template-columns: 1fr; }
-    }
     @media (max-width: 600px) {
       .nav-pill { display: none; }
       .hero { padding: 64px 20px 60px; }
@@ -452,6 +446,7 @@
       .contact-icon-wrap { display: none; }
       .grade-card::after { font-size: 64px; }
       .contact-banner { padding: 0 20px; }
+      .cal-week-grid { grid-template-columns: repeat(7, minmax(108px, 1fr)); }
     }
     @media (max-width: 400px) {
       .grades-grid { grid-template-columns: 1fr; }
@@ -1039,11 +1034,7 @@
     /* Inline location pin SVG */
     var PIN = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:middle;flex-shrink:0;margin-top:-1px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>';
 
-    function renderEventRows(events) {
-      if (!events || !events.length) {
-        return '<div class="day-events-empty">No scheduled events.</div>';
-      }
-
+    function renderEventList(events) {
       return events.map(function(ev) {
         var metaLine = '';
         if (ev.inCharge && ev.venue) {
@@ -1055,45 +1046,36 @@
         }
 
         return [
-          '<div class="day-event-row">',
-          '  <div class="day-event-content">',
-          '    <div class="day-event-title">' + esc(ev.title) + '</div>',
-          ev.time ? ('    <div class="day-event-time">' + CLOCK + ' ' + esc(ev.time) + '</div>') : '',
-          metaLine ? ('    <div class="day-event-meta">' + metaLine + '</div>') : '',
-          '  </div>',
+          '<div class="cal-event">',
+          '  <div class="cal-event-title">' + esc(ev.title) + '</div>',
+          ev.time ? ('  <div class="cal-event-time">' + CLOCK + ' ' + esc(ev.time) + '</div>') : '',
+          metaLine ? ('  <div class="cal-event-meta">' + metaLine + '</div>') : '',
           '</div>'
-        ].filter(Boolean).join('
-');
-      }).join('
-');
+        ].filter(Boolean).join('\n');
+      }).join('\n');
     }
 
     function renderDayColumn(day, today) {
       var isToday   = (day.date.toDateString() === today.toDateString());
-      var isWeekend = (day.date.getDay() === 0 || day.date.getDay() === 6);
-      var evCount   = day.events.length;
-      var countText = (evCount === 1) ? '1 event' : (evCount + ' events');
+      var hasEvents = day.events.length > 0;
+      var stateClass = hasEvents ? 'has-events' : 'is-empty';
       var fullDay   = FULL_DAYS[day.date.getDay()] + ', '
                     + FULL_MONS[day.date.getMonth()] + ' ' + day.date.getDate();
 
+      var bodyHtml = hasEvents
+        ? '<div class="cal-col-body">' + renderEventList(day.events) + '</div>'
+        : '<div class="cal-no-events"><span>&mdash;</span></div>';
+
       return [
-        '<section class="events-day-col' + (isToday ? ' is-today' : '') + (isWeekend ? ' is-weekend' : '') + '">',
-        '  <div class="events-day-head">',
-        '    <div class="events-day-chip" aria-hidden="true">',
-        '      <span class="chip-dow">' + DOW[day.date.getDay()] + '</span>',
-        '      <span class="chip-num">' + day.date.getDate() + '</span>',
-        '      <span class="chip-mon">' + MONS[day.date.getMonth()] + '</span>',
-        '    </div>',
-        '    <div class="events-day-info">',
-        '      <span class="events-day-title">' + esc(fullDay) + '</span>',
-        '      <span class="events-day-count">' + esc(countText) + '</span>',
-        isToday ? '      <span class="events-day-tag">Today</span>' : '',
-        '    </div>',
+        '<div class="cal-col ' + stateClass + (isToday ? ' is-today' : '') + '" title="' + esc(fullDay) + '">',
+        '  <div class="cal-col-head">',
+        '    <span class="cal-dow">' + DOW[day.date.getDay()] + '</span>',
+        '    <span class="cal-day-num">' + day.date.getDate() + '</span>',
+        '    <span class="cal-month-lbl">' + MONS[day.date.getMonth()] + '</span>',
+        isToday ? '    <span class="cal-today-badge">Today</span>' : '',
         '  </div>',
-        '  <div class="events-day-events" role="list">',
-        renderEventRows(day.events),
-        '  </div>',
-        '</section>'
+        bodyHtml,
+        '</div>'
       ].filter(Boolean).join('\n');
     }
 
@@ -1158,7 +1140,7 @@
           );
         } else {
           container.innerHTML =
-            '<div class="events-week-grid">' +
+            '<div class="cal-week-grid">' +
             dayEvents.map(function(day) { return renderDayColumn(day, today); }).join('\n') +
             '</div>';
         }
