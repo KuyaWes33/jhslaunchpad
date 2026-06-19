@@ -792,7 +792,7 @@
       var pht   = nowPHT();
       var today = midnight(pht);
       var dow   = today.getDay();
-      var delta = (dow === 0) ? -6 : (1 - dow); /* back to Monday */
+      var delta = -dow;
       var wStart = new Date(today); wStart.setDate(today.getDate() + delta);
       var wEnd   = new Date(wStart); wEnd.setDate(wStart.getDate() + 6);
       return { today: today, weekStart: wStart, weekEnd: wEnd };
