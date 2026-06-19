@@ -533,8 +533,8 @@
         <div class="hero-rule-line"></div>
       </div>
       <p class="hero-body">
-        Plan, validate, and refine assessment structures aligned with the 40&ndash;60
-        Term Examination &ndash; Summative Test rule under Department Order No. 015.
+        Plan, validate, and refine assessment structures using the 50&ndash;50 rule for two Summative Tests,
+        or the 40&ndash;60 rule for three to four Summative Tests, under Department Order No. 015.
       </p>
       <div class="hero-tags" aria-hidden="true">
         <span class="hero-tag">Suggest a Plan</span>
@@ -577,7 +577,7 @@
               <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
             </div>
             <h3 class="apg-home-title">Assessment Planner</h3>
-            <p class="apg-home-desc">Suggest, check, or fix an assessment plan so it satisfies the 40&ndash;60 TE&ndash;ST rule.</p>
+            <p class="apg-home-desc">Suggest, check, or improve an assessment plan using the 50&ndash;50 rule (2 STs) or 40&ndash;60 rule (3&ndash;4 STs).</p>
             <button class="apg-btn" onclick="showApgPage('apgPlanner', document.querySelector('[data-target=apgPlanner]'))">Open Planner</button>
           </div>
 
@@ -616,7 +616,7 @@
         <div class="apg-subnav" role="tablist" aria-label="Planner modules">
           <button class="apg-subnav-btn is-active" data-target="apgSuggest" onclick="showApgModule('apgSuggest', this)">Suggest a Plan</button>
           <button class="apg-subnav-btn" data-target="apgCheck" onclick="showApgModule('apgCheck', this)">Check My Plan</button>
-          <button class="apg-subnav-btn" data-target="apgFix" onclick="showApgModule('apgFix', this)">Fix My Plan</button>
+          <button class="apg-subnav-btn" data-target="apgFix" onclick="showApgModule('apgFix', this)">Improve My Plan</button>
         </div>
 
         <!-- ── SUGGEST A PLAN ── -->
@@ -643,12 +643,8 @@
 
               <div id="teSuggestSection">
                 <div class="apg-field">
-                  <label class="apg-label" for="teItems">TE Number of Items</label>
-                  <input class="apg-input" type="number" id="teItems" min="50" placeholder="Minimum of 50 items">
-                </div>
-                <div class="apg-field">
-                  <label class="apg-label" for="tePoints">TE Number of Points</label>
-                  <input class="apg-input" type="number" id="tePoints" min="50" placeholder="Must be equal to or greater than TE items">
+                  <label class="apg-label" for="tePoints">TE Points</label>
+                  <input class="apg-input" type="number" id="tePoints" min="50" placeholder="Minimum of 50 points">
                 </div>
                 <div class="apg-field">
                   <label class="apg-label" for="suggestSTCount">Number of Summative Tests</label>
@@ -696,15 +692,9 @@
               <p class="apg-card-sub">Validate an assessment plan against APG requirements.</p>
 
               <div class="apg-field">
-                <label class="apg-label" for="checkTEItems">TE Items</label>
-                <input class="apg-input" type="number" id="checkTEItems" min="50" placeholder="Minimum of 50 items">
-                <small class="apg-helper">Minimum: 50 items</small>
-              </div>
-
-              <div class="apg-field">
                 <label class="apg-label" for="checkTEPoints">TE Points</label>
                 <input class="apg-input" type="number" id="checkTEPoints" min="50" placeholder="Minimum of 50 points">
-                <small class="apg-helper">Minimum: 50 points and must be equal to or greater than TE Items</small>
+                <small class="apg-helper">Minimum: 50 points</small>
               </div>
 
               <div class="apg-field">
@@ -736,24 +726,18 @@
           </div>
         </div>
 
-        <!-- ── FIX MY PLAN ── -->
+        <!-- ── IMPROVE MY PLAN ── -->
         <div class="apg-module" id="apgFix">
           <div class="apg-split">
 
             <div class="apg-card">
-              <h3 class="apg-card-title">Fix My Plan</h3>
-              <p class="apg-card-sub">Enter a non-compliant plan and receive suggested revisions.</p>
-
-              <div class="apg-field">
-                <label class="apg-label" for="fixTEItems">TE Items</label>
-                <input class="apg-input" type="number" id="fixTEItems" min="50" placeholder="Minimum of 50 items">
-                <small class="apg-helper">Minimum: 50 items</small>
-              </div>
+              <h3 class="apg-card-title">Improve My Plan</h3>
+              <p class="apg-card-sub">Review an assessment plan and receive recommendations for improvement.</p>
 
               <div class="apg-field">
                 <label class="apg-label" for="fixTEPoints">TE Points</label>
                 <input class="apg-input" type="number" id="fixTEPoints" min="50" placeholder="Minimum of 50 points">
-                <small class="apg-helper">Minimum: 50 points and must be equal to or greater than TE Items</small>
+                <small class="apg-helper">Minimum: 50 points</small>
               </div>
 
               <div class="apg-field">
@@ -768,16 +752,15 @@
               <div class="apg-field">
                 <label class="apg-label">Existing Summative Test Points</label>
                 <div id="fixSTInputs" class="apg-stgrid"></div>
-                <small class="apg-helper">Enter the existing ST points. APG will preserve the original ST proportions whenever possible.</small>
               </div>
 
               <div style="margin-top:6px">
-                <button class="apg-btn" onclick="fixPlan()">Suggest Revisions</button>
+                <button class="apg-btn" onclick="fixPlan()">Get Recommendations</button>
               </div>
             </div>
 
             <div class="apg-card apg-result-card">
-              <h3 class="apg-card-title">Suggested Revision</h3>
+              <h3 class="apg-card-title">Recommendations</h3>
               <div id="fixResults">
                 <p class="apg-placeholder">Suggested compliant plan will appear here.</p>
               </div>
@@ -799,7 +782,7 @@
           <h2 class="section-title"><span>TOS Builder</span></h2>
           <p class="section-intro">
             Generate a Table of Specifications using competencies, allotted instructional
-            days, and the desired number of items or points.
+            days, and the desired total assessment points.
           </p>
         </div>
 
@@ -831,23 +814,15 @@
 
           <hr style="border:none;border-top:1px solid var(--gray-200);margin:26px 0">
 
-          <h3 class="apg-card-title">Desired Output</h3>
+          <h3 class="apg-card-title">Total Assessment Points</h3>
 
           <div class="apg-field">
-            <label class="apg-label" for="desiredOutput">Output Type</label>
-            <select class="apg-select" id="desiredOutput">
-              <option value="items">Items</option>
-              <option value="points">Points</option>
-            </select>
-          </div>
-
-          <div class="apg-field">
-            <label class="apg-label" for="totalDesiredOutput">Total Desired Output</label>
-            <input class="apg-input" type="number" id="totalDesiredOutput" min="1" placeholder="e.g., 50 items or 100 points">
+            <label class="apg-label" for="totalDesiredOutput">Total Assessment Points</label>
+            <input class="apg-input" type="number" id="totalDesiredOutput" min="1" placeholder="e.g., 50 points">
           </div>
 
           <div style="margin-top:6px">
-            <button class="apg-btn" onclick="generateTOS()">Generate TOS</button>
+            <button class="apg-btn" onclick="generateTOS()">Generate TOS Allocation</button>
           </div>
         </div>
 
@@ -886,10 +861,6 @@
           <div class="apg-card apg-about-card is-wide">
             <h3>Assessment Assumptions</h3>
             <ul>
-              <li>Term Examination (TE) contributes 40% of the overall assessment.</li>
-              <li>Summative Tests (STs) contribute 60% of the overall assessment.</li>
-              <li>The Term Examination must contain at least 50 items and 50 points.</li>
-              <li>TE Points must be equal to or greater than TE Items.</li>
               <li>The number of Summative Tests ranges from two (2) to four (4).</li>
               <li>Each Summative Test must not exceed one-half of the Term Examination points.</li>
             </ul>
@@ -940,9 +911,10 @@
   </footer>
 
   <!-- ══════════════════════════════════════════════════════════════
-       ASSESSMENT PLANNING GUIDE — LOGIC
-       Ported from the standalone APG app (Code.gs / scripts.html),
-       computations unchanged, restyled to fit JHS Launchpad.
+       ASSESSMENT PLANNING GUIDE — LOGIC v1.1
+       Rules updated: 2 STs → 50/50 split; 3–4 STs → 40/60 split.
+       TE Items removed. No ACCEPTABLE state — only IDEAL or NEEDS REVISION.
+       TOS always outputs Points. "Fix My Plan" renamed "Improve My Plan".
   ══════════════════════════════════════════════════════════════ -->
   <script>
   (function () {
@@ -1016,25 +988,32 @@
 
     /* ── Helpers ──────────────────────────────────────────────────── */
     function round2(value) { return Number(Number(value).toFixed(2)); }
-    function approx(a, b, tolerance) { return Math.abs(a - b) <= (tolerance || 0.01); }
+
+    /* tolerance = 1 percentage point (v1.1) */
+    function approx(a, b, tolerance) {
+      return Math.abs(a - b) <= (tolerance !== undefined ? tolerance : 1);
+    }
+
+    /* Distribution label based on ST count */
+    function distLabel(stCount) {
+      return stCount === 2 ? '50\u201350' : '40\u201360';
+    }
 
     var ICON_CHECK = '<svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>';
-    var ICON_WARN  = '<svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>';
     var ICON_X     = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>';
 
     function statusBox(kind, title, bodyHtml) {
-      var cls = kind === 'ideal' ? 'is-ideal' : (kind === 'acceptable' ? 'is-acceptable' : 'is-error');
-      var icon = kind === 'ideal' ? ICON_CHECK : (kind === 'acceptable' ? ICON_WARN : ICON_X);
+      var cls  = kind === 'ideal' ? 'is-ideal' : 'is-error';
+      var icon = kind === 'ideal' ? ICON_CHECK : ICON_X;
       return '<div class="apg-status ' + cls + '">' +
                '<div class="apg-status-head">' + icon + title + '</div>' +
                bodyHtml +
              '</div>';
     }
 
-    function renderStatus(targetId, status, issues) {
-      var kind = status === 'NEEDS REVISION' ? 'error' : (status === 'IDEAL' || status === 'RECOMMENDED' ? 'ideal' : 'acceptable');
+    function renderNeedsRevision(targetId, issues) {
       var body = '<ul>' + issues.map(function (i) { return '<li>' + i + '</li>'; }).join('') + '</ul>';
-      document.getElementById(targetId).innerHTML = statusBox(kind, status, body);
+      document.getElementById(targetId).innerHTML = statusBox('error', 'NEEDS REVISION', body);
     }
 
     /* ── SUGGEST A PLAN ───────────────────────────────────────────── */
@@ -1044,176 +1023,184 @@
     };
 
     function generateTEFirstPlan() {
-      var teItems = Number(document.getElementById('teItems').value);
       var tePoints = Number(document.getElementById('tePoints').value);
-      var stCount = Number(document.getElementById('suggestSTCount').value);
+      var stCount  = Number(document.getElementById('suggestSTCount').value);
+      var results  = document.getElementById('suggestResults');
 
-      if (teItems < 50) return renderStatus('suggestResults', 'NEEDS REVISION', ['TE Items must be at least 50.']);
-      if (tePoints < 50) return renderStatus('suggestResults', 'NEEDS REVISION', ['TE Points must be at least 50.']);
-      if (tePoints < teItems) return renderStatus('suggestResults', 'NEEDS REVISION', ['TE Points must be equal to or greater than TE Items.']);
+      if (tePoints < 50) {
+        return renderNeedsRevision('suggestResults', ['TE Points must be at least 50.']);
+      }
 
-      var idealTotal = tePoints / 0.40;
+      /* 2 STs → 50 / 50 */
+      if (stCount === 2) {
+        var stShare = tePoints / 2;
+        var rows = '<div class="apg-result-row"><strong>TE</strong><span>' + tePoints + ' pts</span></div>' +
+                   '<div class="apg-result-row"><strong>ST 1</strong><span>' + round2(stShare) + ' pts</span></div>' +
+                   '<div class="apg-result-row"><strong>ST 2</strong><span>' + round2(stShare) + ' pts</span></div>';
+        results.innerHTML = statusBox('ideal', 'RECOMMENDED',
+          '<p>Recommended 50\u201350 distribution for two Summative Tests.</p>' +
+          '<div class="apg-result-list">' + rows + '</div>');
+        return;
+      }
+
+      /* 3–4 STs → 40 / 60 */
+      var idealTotal   = tePoints / 0.40;
       var idealSTTotal = idealTotal * 0.60;
-      var idealShare = idealSTTotal / stCount;
-
-      var results = document.getElementById('suggestResults');
+      var idealShare   = idealSTTotal / stCount;
 
       if (idealShare <= tePoints / 2) {
-        var rows = '<div class="apg-result-row"><strong>TE</strong><span>' + tePoints + ' pts</span></div>';
-        for (var i = 1; i <= stCount; i++) {
-          rows += '<div class="apg-result-row"><strong>ST ' + i + '</strong><span>' + round2(idealShare) + ' pts</span></div>';
-        }
-        results.innerHTML = statusBox('ideal', 'RECOMMENDED', '<p>Preferred 40&ndash;60 distribution achieved.</p><div class="apg-result-list">' + rows + '</div>');
-        return;
-      }
-
-      var maxSTShare = tePoints / 2;
-      var maxSTTotal = maxSTShare * stCount;
-      var acceptableSTPercent = (maxSTTotal / (tePoints + maxSTTotal)) * 100;
-
-      if (acceptableSTPercent >= 50 && acceptableSTPercent <= 60) {
         var rows2 = '<div class="apg-result-row"><strong>TE</strong><span>' + tePoints + ' pts</span></div>';
-        for (var j = 1; j <= stCount; j++) {
-          rows2 += '<div class="apg-result-row"><strong>ST ' + j + '</strong><span>' + round2(maxSTShare) + ' pts</span></div>';
+        for (var i = 1; i <= stCount; i++) {
+          rows2 += '<div class="apg-result-row"><strong>ST ' + i + '</strong><span>' + round2(idealShare) + ' pts</span></div>';
         }
-        results.innerHTML = statusBox('ideal', 'RECOMMENDED', '<div class="apg-result-list">' + rows2 + '</div>');
+        results.innerHTML = statusBox('ideal', 'RECOMMENDED',
+          '<p>Recommended 40\u201360 distribution for ' + stCount + ' Summative Tests.</p>' +
+          '<div class="apg-result-list">' + rows2 + '</div>');
         return;
       }
 
-      renderStatus('suggestResults', 'NEEDS REVISION', ['Increase TE Points or adjust the number of Summative Tests.']);
+      renderNeedsRevision('suggestResults', ['Increase TE Points or adjust the number of Summative Tests.']);
     }
 
     function generateSTFirstPlan() {
-      var stValues = [].slice.call(document.querySelectorAll('.suggest-st-point')).map(function (input) { return Number(input.value || 0); });
-      var stTotal = stValues.reduce(function (sum, value) { return sum + value; }, 0);
+      var stValues = [].slice.call(document.querySelectorAll('.suggest-st-point'))
+                       .map(function (input) { return Number(input.value || 0); });
+      var stCount  = stValues.length;
+      var stTotal  = stValues.reduce(function (sum, v) { return sum + v; }, 0);
+      var tePoints;
 
-      var tePoints = stTotal * (40 / 60);
+      /* 2 STs → 50/50: TE equals ST total */
+      if (stCount === 2) {
+        tePoints = stTotal;
+      } else {
+        /* 3–4 STs → 40/60 */
+        tePoints = stTotal * (40 / 60);
+      }
 
       if (tePoints >= 50 && stValues.every(function (st) { return st <= tePoints / 2; })) {
-        return renderSTRecommendation(stTotal, tePoints);
+        var dist = distLabel(stCount);
+        document.getElementById('suggestResults').innerHTML = statusBox('ideal', 'RECOMMENDED',
+          '<div class="apg-result-list">' +
+          '<div class="apg-result-row"><strong>Suggested TE Points</strong><span>' + round2(tePoints) + ' pts</span></div>' +
+          '<div class="apg-result-row"><strong>Target Distribution</strong><span>' + dist + '</span></div>' +
+          '</div>' +
+          '<p style="margin-top:10px">You may retain your current Summative Test point allocations.</p>');
+        return;
       }
 
-      for (var stPercent = 59; stPercent >= 50; stPercent--) {
-        var tePercent = 100 - stPercent;
-        tePoints = stTotal * (tePercent / stPercent);
-        if (tePoints >= 50 && stValues.every(function (st) { return st <= tePoints / 2; })) {
-          return renderSTRecommendation(stTotal, tePoints);
-        }
-      }
-
-      renderStatus('suggestResults', 'NEEDS REVISION', ['Increase the total ST points or adjust the ST distribution.']);
-    }
-
-    function renderSTRecommendation(stTotal, tePoints) {
-      var body = '<div class="apg-result-list">' +
-        '<div class="apg-result-row"><strong>Suggested TE Items</strong><span>50</span></div>' +
-        '<div class="apg-result-row"><strong>Suggested TE Points</strong><span>' + round2(tePoints) + ' pts</span></div>' +
-        '</div><p style="margin-top:10px">You may retain your current Summative Tests.</p>';
-      document.getElementById('suggestResults').innerHTML = statusBox('ideal', 'RECOMMENDED', body);
+      renderNeedsRevision('suggestResults', ['Increase the total ST points or adjust the ST distribution.']);
     }
 
     /* ── CHECK MY PLAN ────────────────────────────────────────────── */
     window.checkPlan = function () {
-      var teItems = Number(document.getElementById('checkTEItems').value);
       var tePoints = Number(document.getElementById('checkTEPoints').value);
-      var stCount = Number(document.getElementById('checkSTCount').value);
-      var stValues = [].slice.call(document.querySelectorAll('#checkSTInputs .check-st-point')).map(function (input) { return Number(input.value || 0); });
+      var stCount  = Number(document.getElementById('checkSTCount').value);
+      var stValues = [].slice.call(document.querySelectorAll('#checkSTInputs .check-st-point'))
+                       .map(function (input) { return Number(input.value || 0); });
+      var stTotal  = stValues.reduce(function (sum, v) { return sum + v; }, 0);
+      var results  = document.getElementById('checkResults');
 
       var issues = [];
-      if (teItems < 50) issues.push('TE Items must be at least 50.');
-      if (tePoints < 50) issues.push('TE Points must be at least 50.');
-      if (tePoints < teItems) issues.push('TE Points must be equal to or greater than TE Items.');
+      if (tePoints < 50)              issues.push('TE Points must be at least 50.');
       if (stCount < 2 || stCount > 4) issues.push('Number of Summative Tests must be between 2 and 4.');
-
-      stValues.forEach(function (st, index) {
-        if (st > tePoints / 2) issues.push('ST ' + (index + 1) + ' exceeds TE Points \u00F7 2.');
+      stValues.forEach(function (st, idx) {
+        if (st > tePoints / 2) issues.push('ST ' + (idx + 1) + ' exceeds TE Points \u00F7 2.');
       });
 
-      var stTotal = stValues.reduce(function (sum, value) { return sum + value; }, 0);
-      var total = tePoints + stTotal;
-      var tePercent = total > 0 ? (tePoints / total) * 100 : 0;
-      var stPercent = total > 0 ? (stTotal / total) * 100 : 0;
-
       if (issues.length > 0) {
-        return renderStatus('checkResults', 'NEEDS REVISION', issues);
+        renderNeedsRevision('checkResults', issues);
+        return;
       }
+
+      var total  = tePoints + stTotal;
+      var tePct  = total > 0 ? (tePoints / total) * 100 : 0;
+      var stPct  = total > 0 ? (stTotal  / total) * 100 : 0;
+      var dist   = distLabel(stCount);
 
       var statsHtml = '<div class="apg-status-stats">' +
-        '<div class="apg-stat"><span class="apg-stat-label">TE Share</span><span class="apg-stat-value">' + round2(tePercent) + '%</span></div>' +
-        '<div class="apg-stat"><span class="apg-stat-label">ST Share</span><span class="apg-stat-value">' + round2(stPercent) + '%</span></div>' +
+        '<div class="apg-stat"><span class="apg-stat-label">TE Share</span><span class="apg-stat-value">' + round2(tePct) + '%</span></div>' +
+        '<div class="apg-stat"><span class="apg-stat-label">ST Share</span><span class="apg-stat-value">' + round2(stPct) + '%</span></div>' +
       '</div>';
 
-      var checkResults = document.getElementById('checkResults');
+      /* 2 STs → 50/50 target; 3–4 STs → 40/60 target */
+      var isIdeal = (stCount === 2)
+        ? (approx(tePct, 50) && approx(stPct, 50))
+        : (approx(tePct, 40) && approx(stPct, 60));
 
-      if (approx(tePercent, 40) && approx(stPercent, 60)) {
-        checkResults.innerHTML = statusBox('ideal', 'IDEAL', '<p>This plan reflects the preferred 40&ndash;60 distribution.</p>' + statsHtml);
-        return;
+      if (isIdeal) {
+        results.innerHTML = statusBox('ideal', 'IDEAL',
+          '<p>This plan reflects the preferred ' + dist + ' distribution.</p>' + statsHtml);
+      } else {
+        results.innerHTML = statusBox('error', 'NEEDS REVISION',
+          '<p>This plan does not meet the required ' + dist + ' distribution.</p>' + statsHtml);
       }
-
-      if (tePercent >= 40 && tePercent <= 50 && stPercent >= 50 && stPercent <= 60) {
-        checkResults.innerHTML = statusBox('acceptable', 'ACCEPTABLE', '<p>This plan falls within the acceptable assessment range.</p>' + statsHtml);
-        return;
-      }
-
-      checkResults.innerHTML = statusBox('error', 'NEEDS REVISION', '<p>The assessment distribution falls outside the acceptable range.</p>' + statsHtml);
     };
 
-    /* ── FIX MY PLAN ──────────────────────────────────────────────── */
+    /* ── IMPROVE MY PLAN ──────────────────────────────────────────── */
     window.fixPlan = function () {
       var tePoints = Number(document.getElementById('fixTEPoints').value);
-      var results = document.getElementById('fixResults');
+      var results  = document.getElementById('fixResults');
 
       if (tePoints < 50) {
         results.innerHTML = statusBox('error', 'NEEDS REVISION', '<p>TE Points must be at least 50.</p>');
         return;
       }
 
-      var stValues = [].slice.call(document.querySelectorAll('#fixSTInputs .fix-st-point')).map(function (input) { return Number(input.value || 0); });
+      var stValues = [].slice.call(document.querySelectorAll('#fixSTInputs .fix-st-point'))
+                       .map(function (input) { return Number(input.value || 0); });
 
       if (stValues.length === 0 || stValues.every(function (st) { return st === 0; })) {
         results.innerHTML = statusBox('error', 'NEEDS REVISION', '<p>Please enter valid Summative Test values.</p>');
         return;
       }
 
-      var maxAllowed = tePoints / 2;
-      var largestST = Math.max.apply(null, stValues);
-      var scaleFactor = Math.min(1, maxAllowed / largestST);
-      var revisedSTs = stValues.map(function (st) { return round2(st * scaleFactor); });
-      var revisedSTTotal = revisedSTs.reduce(function (sum, value) { return sum + value; }, 0);
-      var total = tePoints + revisedSTTotal;
-      var tePercent = (tePoints / total) * 100;
-      var stPercent = (revisedSTTotal / total) * 100;
+      var stCount      = stValues.length;
+      var maxAllowed   = tePoints / 2;
+      var largestST    = Math.max.apply(null, stValues);
+      var scaleFactor  = Math.min(1, maxAllowed / largestST);
+      var revisedSTs   = stValues.map(function (st) { return round2(st * scaleFactor); });
+      var revisedTotal = revisedSTs.reduce(function (sum, v) { return sum + v; }, 0);
+      var total        = tePoints + revisedTotal;
+      var tePct        = (tePoints     / total) * 100;
+      var stPct        = (revisedTotal / total) * 100;
+      var dist         = distLabel(stCount);
 
-      var kind, status;
-      if (approx(tePercent, 40) && approx(stPercent, 60)) { kind = 'ideal'; status = 'IDEAL'; }
-      else if (tePercent >= 40 && tePercent <= 50 && stPercent >= 50 && stPercent <= 60) { kind = 'acceptable'; status = 'ACCEPTABLE'; }
-      else { kind = 'error'; status = 'NEEDS REVISION'; }
+      /* 2 STs → 50/50; 3–4 STs → 40/60 */
+      var isIdeal = (stCount === 2)
+        ? (approx(tePct, 50) && approx(stPct, 50))
+        : (approx(tePct, 40) && approx(stPct, 60));
 
-      var originalSTTotal = stValues.reduce(function (sum, value) { return sum + value; }, 0);
+      if (isIdeal) {
+        var rowsHtml = '<div class="apg-result-list">';
+        revisedSTs.forEach(function (st, idx) {
+          rowsHtml += '<div class="apg-result-row"><strong>ST ' + (idx + 1) + '</strong><span>' + st + ' pts</span></div>';
+        });
+        rowsHtml += '</div>';
 
-      var statsHtml = '<div class="apg-status-stats">' +
-        '<div class="apg-stat"><span class="apg-stat-label">Original ST Total</span><span class="apg-stat-value">' + round2(originalSTTotal) + '</span></div>' +
-        '<div class="apg-stat"><span class="apg-stat-label">Revised ST Total</span><span class="apg-stat-value">' + round2(revisedSTTotal) + '</span></div>' +
-        '<div class="apg-stat"><span class="apg-stat-label">Scale Applied</span><span class="apg-stat-value">' + round2(scaleFactor * 100) + '%</span></div>' +
-        '<div class="apg-stat"><span class="apg-stat-label">TE / ST</span><span class="apg-stat-value">' + round2(tePercent) + '% / ' + round2(stPercent) + '%</span></div>' +
-      '</div>';
+        var statsHtml = '<div class="apg-status-stats">' +
+          '<div class="apg-stat"><span class="apg-stat-label">TE / ST</span>' +
+            '<span class="apg-stat-value">' + round2(tePct) + '% / ' + round2(stPct) + '%</span></div>' +
+          (scaleFactor < 1
+            ? '<div class="apg-stat"><span class="apg-stat-label">Scale Applied</span>' +
+                '<span class="apg-stat-value">' + round2(scaleFactor * 100) + '%</span></div>'
+            : '') +
+        '</div>';
 
-      var rowsHtml = '<div class="apg-result-list">';
-      revisedSTs.forEach(function (st, index) {
-        rowsHtml += '<div class="apg-result-row"><strong>ST ' + (index + 1) + '</strong><span>' + st + ' pts</span></div>';
-      });
-      rowsHtml += '</div>';
+        results.innerHTML = statusBox('ideal', 'IDEAL', statsHtml + rowsHtml);
 
-      var body = '<p>Intent-preserving revision applied.</p>' + statsHtml + rowsHtml;
-
-      if (status === 'NEEDS REVISION') {
-        body += '<p style="margin-top:10px">No compliant revision could be generated while preserving the original ST structure. Consider increasing TE Points or redesigning the Summative Tests.</p>';
+      } else {
+        results.innerHTML = statusBox('error', 'NEEDS REVISION',
+          '<p>This plan does not meet the recommended ' + dist + ' assessment structure.</p>' +
+          '<p style="margin-top:10px">Suggested Actions:</p>' +
+          '<ul>' +
+            '<li>Increase TE Points</li>' +
+            '<li>Adjust the Summative Test points</li>' +
+            '<li>Increase the number of Summative Tests</li>' +
+          '</ul>');
       }
-
-      results.innerHTML = statusBox(kind, status, body);
     };
 
-    /* ── TOS BUILDER ──────────────────────────────────────────────── */
+    /* ── TOS BUILDER (v1.1 — always Points, no Items/Points toggle) ─ */
     window.addCompetencyRow = function () {
       var container = document.getElementById('competencyContainer');
       if (!container) return;
@@ -1242,20 +1229,20 @@
       if (isLastRow) {
         addCompetencyRow();
         var newRows = document.querySelectorAll('.competency-row');
-        var newestRow = newRows[newRows.length - 1];
-        newestRow.querySelector('.competency-input')?.focus();
+        newRows[newRows.length - 1].querySelector('.competency-input')?.focus();
       }
     };
 
     window.generateTOS = function () {
-      var competencies = Array.prototype.slice.call(document.querySelectorAll('.competency-input')).map(function (input) { return input.value.trim(); });
-      var days = Array.prototype.slice.call(document.querySelectorAll('.days-input')).map(function (input) { return Number(input.value); });
-      var outputType = document.getElementById('desiredOutput').value;
+      var competencies = Array.prototype.slice.call(document.querySelectorAll('.competency-input'))
+                              .map(function (input) { return input.value.trim(); });
+      var days        = Array.prototype.slice.call(document.querySelectorAll('.days-input'))
+                             .map(function (input) { return Number(input.value); });
       var totalOutput = Number(document.getElementById('totalDesiredOutput').value);
-      var results = document.getElementById('tosResults');
+      var results     = document.getElementById('tosResults');
 
       if (totalOutput < 1) {
-        results.innerHTML = statusBox('error', 'NEEDS REVISION', '<p>Please enter a valid total desired output.</p>');
+        results.innerHTML = statusBox('error', 'NEEDS REVISION', '<p>Please enter a valid total assessment points value.</p>');
         return;
       }
 
@@ -1265,39 +1252,47 @@
           return;
         }
         if (!days[i] || days[i] < 1) {
-          results.innerHTML = statusBox('error', 'NEEDS REVISION', '<p>Competency &ldquo;' + competencies[i] + '&rdquo; must have at least 1 day.</p>');
+          results.innerHTML = statusBox('error', 'NEEDS REVISION',
+            '<p>Competency &ldquo;' + competencies[i] + '&rdquo; must have at least 1 day.</p>');
           return;
         }
       }
 
-      var totalDays = days.reduce(function (sum, day) { return sum + day; }, 0);
-
+      var totalDays   = days.reduce(function (sum, day) { return sum + day; }, 0);
       var allocations = competencies.map(function (competency, index) {
         var raw = (days[index] / totalDays) * totalOutput;
-        return { competency: competency, days: days[index], raw: raw, floor: Math.floor(raw), remainder: raw - Math.floor(raw) };
+        return { competency: competency, days: days[index], raw: raw,
+                 floor: Math.floor(raw), remainder: raw - Math.floor(raw) };
       });
 
+      /* Largest Remainder Method */
       var allocated = allocations.reduce(function (sum, item) { return sum + item.floor; }, 0);
       var remaining = totalOutput - allocated;
-
       allocations.sort(function (a, b) { return b.remainder - a.remainder; });
       for (var r = 0; r < remaining; r++) { allocations[r].floor++; }
-
-      allocations.sort(function (a, b) { return competencies.indexOf(a.competency) - competencies.indexOf(b.competency); });
-
-      var html = '<div class="apg-table-wrap"><table class="apg-table"><thead><tr>' +
-        '<th>Competency</th><th>Days</th><th>' + (outputType === 'items' ? 'Items' : 'Points') + '</th>' +
-        '</tr></thead><tbody>';
-
-      var finalDays = 0, finalAllocation = 0;
-      allocations.forEach(function (item) {
-        html += '<tr><td data-label="Competency">' + item.competency + '</td><td data-label="Days">' + item.days + '</td><td data-label="' + (outputType === 'items' ? 'Items' : 'Points') + '">' + item.floor + '</td></tr>';
-        finalDays += item.days;
-        finalAllocation += item.floor;
+      allocations.sort(function (a, b) {
+        return competencies.indexOf(a.competency) - competencies.indexOf(b.competency);
       });
 
-      html += '</tbody><tfoot><tr><th>TOTAL</th><th>' + finalDays + '</th><th>' + finalAllocation + '</th></tr></tfoot></table></div>' +
-        '<p style="margin-top:14px;font-size:13px;color:var(--gray-600)">Allocations were computed proportionally based on allotted instructional days using the Largest Remainder Method.</p>';
+      var finalDays = 0, finalAlloc = 0;
+      var html = '<div class="apg-table-wrap"><table class="apg-table"><thead><tr>' +
+        '<th>Competency</th><th>Days</th><th>Points</th>' +
+        '</tr></thead><tbody>';
+
+      allocations.forEach(function (item) {
+        html += '<tr>' +
+          '<td data-label="Competency">' + item.competency + '</td>' +
+          '<td data-label="Days">' + item.days + '</td>' +
+          '<td data-label="Points">' + item.floor + '</td>' +
+          '</tr>';
+        finalDays  += item.days;
+        finalAlloc += item.floor;
+      });
+
+      html += '</tbody><tfoot><tr><th>TOTAL</th><th>' + finalDays + '</th><th>' + finalAlloc + '</th></tr></tfoot>' +
+        '</table></div>' +
+        '<p style="margin-top:14px;font-size:13px;color:var(--gray-600)">' +
+        'Allocations computed proportionally based on allotted instructional days using the Largest Remainder Method.</p>';
 
       results.innerHTML = html;
     };
