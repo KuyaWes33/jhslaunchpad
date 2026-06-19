@@ -187,6 +187,7 @@
       max-width: 1120px; margin: 0 auto;
     }
 
+
     /* ─────────────────────────────────────────────
        EVENTS THIS WEEK
     ───────────────────────────────────────────── */
@@ -248,13 +249,10 @@
     .cal-event-meta { font-size: 9.5px; color: var(--gray-400); margin-top: 2px; line-height: 1.4; }
     .cal-no-events { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px 8px; }
     .cal-no-events span { font-size: 18px; color: var(--gray-200); }
-
-    /* Empty / Error / Loading states */
     .events-state {
       display: flex; flex-direction: column; align-items: center;
-      justify-content: center; gap: 12px;
-      padding: 52px 20px; background: var(--surface);
-      border: 1px dashed var(--gray-200);
+      justify-content: center; gap: 12px; padding: 52px 20px;
+      background: var(--surface); border: 1px dashed var(--gray-200);
       border-radius: var(--radius-md); text-align: center;
     }
     .events-state-icon {
@@ -263,16 +261,13 @@
     }
     .events-state-msg { font-size: 14px; font-weight: 600; color: var(--gray-600); }
     .events-state-sub { font-size: 12px; color: var(--gray-400); max-width: 340px; line-height: 1.6; }
-
-    /* Loading ring */
     .loading-ring {
       width: 28px; height: 28px;
       border: 2.5px solid var(--green-100); border-top-color: var(--green-700);
       border-radius: 50%; animation: spin 0.75s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* ─────────────────────────────────────────────
+/* ─────────────────────────────────────────────
        RESOURCE CARDS
     ───────────────────────────────────────────── */
     .resources-grid {
@@ -513,7 +508,6 @@
           <span class="events-week-range" id="events-week-range">—</span>
         </div>
       </div>
-
       <div id="events-container">
         <div class="events-state">
           <div class="loading-ring" aria-hidden="true"></div>
@@ -544,6 +538,14 @@
           <svg class="res-arrow" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
         </a>
 
+        <a class="res-card" data-link="assessmentGuide" href="apg.html" aria-label="Assessment Planning Guide">
+          <div class="res-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+          </div>
+          <span class="res-label">Assessment Planning Guide</span>
+          <svg class="res-arrow" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </a>
+
         <a class="res-card" data-link="schoolista" href="#" target="_blank" rel="noopener noreferrer" aria-label="Schoolista — opens in new tab">
           <div class="res-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24">
@@ -556,7 +558,7 @@
           <svg class="res-arrow" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
         </a>
 
-        <a class="res-card" data-link="guidanceReporting" href="#" target="_blank" rel="noopener noreferrer" aria-label="Guidance Reporting Link — opens in new tab">
+        <a class="res-card" data-link="guidanceReporting" href="#" target="_blank" rel="noopener noreferrer" aria-label="Guidance Reporting — opens in new tab">
           <div class="res-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24">
               <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
@@ -566,6 +568,18 @@
             </svg>
           </div>
           <span class="res-label">Guidance Reporting</span>
+          <svg class="res-arrow" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </a>
+
+        <a class="res-card" data-link="ptcForm" href="#" target="_blank" rel="noopener noreferrer" aria-label="PTC Form — opens in new tab">
+          <div class="res-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <span class="res-label">PTC Form</span>
           <svg class="res-arrow" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
         </a>
 
@@ -618,18 +632,6 @@
             </svg>
           </div>
           <span class="res-label">Payslip</span>
-          <svg class="res-arrow" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-        </a>
-
-        <a class="res-card" data-link="ptcForm" href="#" target="_blank" rel="noopener noreferrer" aria-label="PTC Form — opens in new tab">
-          <div class="res-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
-            </svg>
-          </div>
-          <span class="res-label">PTC Form</span>
           <svg class="res-arrow" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
         </a>
 
@@ -721,10 +723,13 @@
     const LINKS = {
       jhsWorkspace:
         "https://drive.google.com/drive/folders/1M4sxG2m6h1vFoge_JREBBSdPJWBfDs_l?usp=drive_link",
+      assessmentGuide: "apg.html",
       schoolista:
         "https://premium.schoolista.com/MGC/Gate/MGC.Login.aspx",
       guidanceReporting:
         "https://script.google.com/a/macros/mgcnewlife.edu.ph/s/AKfycbxtAjD8Nh2NR_X6IoBqIlV9C1-dQ4nMldTR9-Ksp2dWSV1oo9LgfYcTJqmupZrT-UMkNQ/exec",
+      ptcForm:
+        "https://docs.google.com/document/d/1WZEGSj1F4WjCqrdORgaQ-4t6D2B0Jwu8P1vzBxi5-aI/edit?usp=sharing",
       clinicAttendance:
         "https://docs.google.com/forms/d/e/1FAIpQLSdjPo5D2G50KgSHkKnljnM7aXTkKgM2IADyALtw8bDkm-wvzA/viewform",
       schoolCalendar:
@@ -733,8 +738,6 @@
         "https://docs.google.com/spreadsheets/d/10T9uU__sjYtITRLYFY_vQkNcOktfEmEmOdFTvhLLIgM/edit?usp=sharing",
       payslip:
         "https://www.allsechro.ph/Smartpay/UserAccount/Login.aspx",
-      ptcForm:
-        "https://docs.google.com/document/d/1WZEGSj1F4WjCqrdORgaQ-4t6D2B0Jwu8P1vzBxi5-aI/edit?usp=sharing",
       nazareth: "nazareth.html",
       berea:    "berea.html",
       damascus: "damascus.html",
@@ -792,7 +795,7 @@
       var pht   = nowPHT();
       var today = midnight(pht);
       var dow   = today.getDay();
-      var delta = -dow;
+      var delta = -dow; /* back to Sunday */
       var wStart = new Date(today); wStart.setDate(today.getDate() + delta);
       var wEnd   = new Date(wStart); wEnd.setDate(wStart.getDate() + 6);
       return { today: today, weekStart: wStart, weekEnd: wEnd };
@@ -966,7 +969,8 @@
                  .filter(function(b){ return b.length > 0; });
     }
 
-    /* ── Build the day-grouped data structure ────────────────────── */
+
+    /* ── Build the Sunday-to-Saturday weekly structure ─────────── */
     function parseHorizontalCalendar(rows, weekStart, weekEnd) {
       if (!rows.length) return [];
 
@@ -1033,7 +1037,7 @@
 
     function fmtRange(a, b) {
       return MONS[a.getMonth()] + ' ' + a.getDate()
-           + ' \u2013 '
+           + ' – '
            + MONS[b.getMonth()] + ' ' + b.getDate()
            + ', ' + b.getFullYear();
     }
@@ -1054,6 +1058,7 @@
         } else if (ev.inCharge) {
           metaLine = esc(ev.inCharge);
         }
+
         return [
           '<div class="cal-event">',
           '  <div class="cal-event-title">' + esc(ev.title) + '</div>',
@@ -1155,11 +1160,10 @@
         }
 
       } catch (err) {
-        console.warn('[JHS Launchpad \u2014 Events widget]', err);
+        console.warn('[JHS Launchpad — Events widget]', err);
         container.innerHTML = renderError();
       }
     }
-
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', init);
     } else {
