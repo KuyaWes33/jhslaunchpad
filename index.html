@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="JHS Launchpad — The official resource hub of the Junior High School Department, MGC New Life Christian Academy">
   <title>JHS Launchpad — MGCNLCA</title>
+  <link rel="icon" type="image/png" href="assets/mgc-logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,13 +80,11 @@
     }
     .nav-brand { display: flex; align-items: center; gap: 14px; }
     .nav-emblem {
-      width: 42px; height: 42px; background: var(--green-900);
-      border-radius: var(--radius-sm); display: grid; place-items: center;
-      flex-shrink: 0; box-shadow: 0 2px 8px rgba(15,61,34,0.3);
+      width: 46px; height: 46px; flex-shrink: 0;
+      display: grid; place-items: center;
     }
-    .nav-emblem svg {
-      width: 22px; height: 22px; stroke: white; fill: none;
-      stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+    .nav-emblem img {
+      width: 100%; height: 100%; object-fit: contain; display: block;
     }
     .nav-text-stack { display: flex; flex-direction: column; }
     .nav-primary {
@@ -513,10 +512,7 @@
     <div class="nav-inner">
       <div class="nav-brand">
         <div class="nav-emblem" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <path d="M2 4.5C2 4.5 7 3 12 5.5C17 3 22 4.5 22 4.5V19.5C22 19.5 17 18 12 20.5C7 18 2 19.5 2 19.5V4.5Z"/>
-            <line x1="12" y1="5.5" x2="12" y2="20.5"/>
-          </svg>
+          <img src="assets/mgc-logo.png" alt="" width="46" height="46" loading="eager">
         </div>
         <div class="nav-text-stack">
           <span class="nav-primary">JHS Launchpad</span>
@@ -810,7 +806,7 @@
       // PASTE THE PRAYER BULLETIN LINK BELOW (between the quotes).
       // Leave it as "" until you have the URL — the card will show a
       // "Link coming soon" state and won't be clickable until it's filled.
-      prayerBulletin: "https://www.canva.com/design/DAFn71XhUoM/_VXhiilbwDSsovJ0EJgDSg/view?utm_content=DAFn71XhUoM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb4ba3c87d4",
+      prayerBulletin: "",
 
       nazareth: "nazareth.html",
       berea:    "berea.html",
@@ -888,7 +884,7 @@
     function baseMonday() {
       var today = phtToday();
       var dow   = today.getDay();
-      var delta = -dow; /* back to Sunday */
+      var delta = (dow === 0) ? -6 : (1 - dow); /* back to Monday */
       var mon   = new Date(today); mon.setDate(today.getDate() + delta);
       return mon;
     }
