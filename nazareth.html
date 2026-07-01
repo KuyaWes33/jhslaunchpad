@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="JHS Launchpad — Nazareth (Grade Seven) document portal, MGC New Life Christian Academy">
   <title>JHS Launchpad — Nazareth</title>
+  <link rel="icon" type="image/png" href="assets/mgc-logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -71,13 +72,11 @@
       display: flex; align-items: center; gap: 14px;
     }
     .nav-emblem {
-      width: 42px; height: 42px; background: var(--green-900);
-      border-radius: var(--radius-sm); display: grid; place-items: center;
-      flex-shrink: 0; box-shadow: 0 2px 8px rgba(15,61,34,0.3);
+      width: 46px; height: 46px; flex-shrink: 0;
+      display: grid; place-items: center;
     }
-    .nav-emblem svg {
-      width: 22px; height: 22px; stroke: white; fill: none;
-      stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+    .nav-emblem img {
+      width: 100%; height: 100%; object-fit: contain; display: block;
     }
     .nav-text-stack { display: flex; flex-direction: column; }
     .nav-primary {
@@ -422,10 +421,7 @@
     <div class="nav-inner">
       <a class="nav-brand" href="index.html">
         <div class="nav-emblem" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <path d="M2 4.5C2 4.5 7 3 12 5.5C17 3 22 4.5 22 4.5V19.5C22 19.5 17 18 12 20.5C7 18 2 19.5 2 19.5V4.5Z"/>
-            <line x1="12" y1="5.5" x2="12" y2="20.5"/>
-          </svg>
+          <img src="assets/mgc-logo.png" alt="" width="46" height="46" loading="eager">
         </div>
         <div class="nav-text-stack">
           <span class="nav-primary">JHS Launchpad</span>
@@ -545,12 +541,12 @@
             <svg class="doc-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
         </a>
-        <a class="doc-card" data-link="midQuarterReports" href="#" target="_blank" rel="noopener noreferrer" aria-label="Mid-Term Reports — opens in new tab">
+        <a class="doc-card" data-link="midQuarterReports" href="#" target="_blank" rel="noopener noreferrer" aria-label="Mid-Quarter Reports — opens in new tab">
           <div class="doc-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           </div>
           <div class="doc-content">
-            <span class="doc-name">Mid-Term Reports</span>
+            <span class="doc-name">Mid-Quarter Reports</span>
             <span class="doc-type">
               <span class="doc-type-dot"></span>Google Sheets
             </span>
