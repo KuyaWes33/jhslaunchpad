@@ -239,66 +239,59 @@
     .events-today-btn:hover { background: var(--green-200); }
     .events-today-btn[hidden] { display: none; }
 
-    /* ── Vertical week list (one row per day, top-to-bottom) ───── */
-    .cal-week-list { display: flex; flex-direction: column; gap: 10px; }
-    .cal-day-row {
-      display: flex; align-items: stretch;
+    /* ── Horizontal week grid (7 day columns, side by side) ────── */
+    .cal-week-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(128px, 1fr));
+      gap: 8px; overflow-x: auto; padding-bottom: 4px;
+    }
+    .cal-col {
+      display: flex; flex-direction: column;
       background: var(--surface); border: 1px solid var(--gray-200);
       border-radius: var(--radius-md); overflow: hidden;
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow-sm); min-height: 160px;
     }
-    .cal-day-row.is-empty {
-      box-shadow: none; background: transparent; border-style: dashed;
-    }
-    .cal-day-row.is-today {
+    .cal-col.is-today {
       border-color: var(--green-200);
       box-shadow: var(--shadow-sm), 0 0 0 3px rgba(28,122,66,0.08);
     }
-    /* Left date rail */
-    .cal-date-rail {
-      flex-shrink: 0; width: 96px;
+    .cal-col-head {
       display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 2px; padding: 16px 8px;
+      align-items: center; padding: 14px 6px 13px; gap: 2px; flex-shrink: 0;
     }
-    .cal-day-row.has-events .cal-date-rail { background: var(--green-900); }
-    .cal-day-row.is-today   .cal-date-rail { background: var(--green-700); }
-    .cal-day-row.is-empty   .cal-date-rail { background: transparent; }
-    .cal-dow { font-size: 9.5px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; }
-    .cal-day-row.has-events .cal-dow { color: var(--green-400); }
-    .cal-day-row.is-empty   .cal-dow { color: var(--gray-400); }
-    .cal-day-num { font-family: var(--font-serif); font-size: 36px; font-weight: 700; line-height: 1; }
-    .cal-day-row.has-events .cal-day-num { color: #fff; }
-    .cal-day-row.is-empty   .cal-day-num { color: var(--gray-400); }
-    .cal-month-lbl { font-size: 8.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
-    .cal-day-row.has-events .cal-month-lbl { color: rgba(255,255,255,0.4); }
-    .cal-day-row.is-empty   .cal-month-lbl { color: var(--gray-400); }
+    .cal-col.has-events .cal-col-head { background: var(--green-900); }
+    .cal-col.is-today   .cal-col-head { background: var(--green-700); }
+    .cal-col.is-empty   .cal-col-head { background: var(--gray-100); border-bottom: 1px solid var(--gray-200); }
+    .cal-dow { font-size: 8.5px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; }
+    .cal-col.has-events .cal-dow { color: var(--green-400); }
+    .cal-col.is-empty   .cal-dow { color: var(--gray-400); }
+    .cal-day-num { font-family: var(--font-serif); font-size: 30px; font-weight: 700; line-height: 1; }
+    .cal-col.has-events .cal-day-num { color: #fff; }
+    .cal-col.is-empty   .cal-day-num { color: var(--gray-400); }
+    .cal-month-lbl { font-size: 8px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+    .cal-col.has-events .cal-month-lbl { color: rgba(255,255,255,0.35); }
+    .cal-col.is-empty   .cal-month-lbl { color: var(--gray-400); }
     .cal-today-badge {
-      margin-top: 4px; font-size: 7.5px; font-weight: 900; letter-spacing: 0.12em;
+      margin-top: 5px; font-size: 7px; font-weight: 900; letter-spacing: 0.14em;
       text-transform: uppercase; color: var(--amber-400);
       background: rgba(232,168,26,0.18); border: 1px solid rgba(232,168,26,0.35);
       border-radius: 20px; padding: 2px 7px;
     }
-    /* Right day body */
-    .cal-day-main {
-      flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center;
-    }
+    .cal-col-body { flex: 1; display: flex; flex-direction: column; }
     .cal-event {
-      padding: 12px 16px; border-left: 3px solid transparent;
+      padding: 9px 10px; border-left: 3px solid transparent;
       transition: background 0.15s ease, border-left-color 0.15s ease;
     }
     .cal-event:not(:last-child) { border-bottom: 1px solid var(--gray-100); }
     .cal-event:hover { background: var(--green-50); border-left-color: var(--green-600); }
-    .cal-event-title { font-size: 14px; font-weight: 600; color: var(--gray-800); line-height: 1.35; }
+    .cal-event-title { font-size: 11px; font-weight: 600; color: var(--gray-800); line-height: 1.35; }
     .cal-event-time {
-      font-size: 12px; color: var(--green-700); font-weight: 500; margin-top: 4px;
-      display: flex; align-items: center; gap: 4px;
+      font-size: 10px; color: var(--green-700); font-weight: 500; margin-top: 3px;
+      display: flex; align-items: center; gap: 3px;
     }
-    .cal-event-meta { font-size: 11.5px; color: var(--gray-400); margin-top: 3px; line-height: 1.45; }
-    .cal-no-events {
-      flex: 1; display: flex; align-items: center;
-      padding: 15px 18px; font-size: 12.5px; color: var(--gray-400); font-style: italic;
-    }
+    .cal-event-meta { font-size: 9.5px; color: var(--gray-400); margin-top: 2px; line-height: 1.4; }
+    .cal-no-events { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px 8px; }
+    .cal-no-events span { font-size: 18px; color: var(--gray-200); }
 
     /* Empty / Error / Loading states */
     .events-state {
@@ -504,8 +497,7 @@
       .contact-banner { padding: 0 20px; }
       .events-nav-center { min-width: 0; flex: 1; }
       .events-today-btn { margin-left: 0; width: 100%; margin-top: 4px; }
-      .cal-date-rail { width: 78px; }
-      .cal-day-num { font-size: 30px; }
+      .cal-week-grid { grid-template-columns: repeat(7, minmax(108px, 1fr)); }
     }
     @media (max-width: 400px) {
       .grades-grid { grid-template-columns: 1fr; }
@@ -818,7 +810,7 @@
       // PASTE THE PRAYER BULLETIN LINK BELOW (between the quotes).
       // Leave it as "" until you have the URL — the card will show a
       // "Link coming soon" state and won't be clickable until it's filled.
-      prayerBulletin: "https://www.canva.com/design/DAFn71XhUoM/_VXhiilbwDSsovJ0EJgDSg/view?utm_content=DAFn71XhUoM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb4ba3c87d4",
+      prayerBulletin: "",
 
       nazareth: "nazareth.html",
       berea:    "berea.html",
@@ -1185,26 +1177,26 @@
       }).join('\n');
     }
 
-    function renderDayRow(day, today) {
+    function renderDayColumn(day, today) {
       var isToday   = (day.date.toDateString() === today.toDateString());
       var hasEvents = day.events.length > 0;
       var stateClass = hasEvents ? 'has-events' : 'is-empty';
       var fullDay   = FULL_DAYS[day.date.getDay()] + ', '
                     + FULL_MONS[day.date.getMonth()] + ' ' + day.date.getDate();
 
-      var mainHtml = hasEvents
-        ? '<div class="cal-day-main">' + renderEventList(day.events) + '</div>'
-        : '<div class="cal-day-main"><div class="cal-no-events">No events scheduled</div></div>';
+      var bodyHtml = hasEvents
+        ? '<div class="cal-col-body">' + renderEventList(day.events) + '</div>'
+        : '<div class="cal-no-events"><span>&mdash;</span></div>';
 
       return [
-        '<div class="cal-day-row ' + stateClass + (isToday ? ' is-today' : '') + '" title="' + esc(fullDay) + '">',
-        '  <div class="cal-date-rail">',
+        '<div class="cal-col ' + stateClass + (isToday ? ' is-today' : '') + '" title="' + esc(fullDay) + '">',
+        '  <div class="cal-col-head">',
         '    <span class="cal-dow">' + DOW[day.date.getDay()] + '</span>',
         '    <span class="cal-day-num">' + day.date.getDate() + '</span>',
         '    <span class="cal-month-lbl">' + MONS[day.date.getMonth()] + '</span>',
         isToday ? '    <span class="cal-today-badge">Today</span>' : '',
         '  </div>',
-        mainHtml,
+        bodyHtml,
         '</div>'
       ].filter(Boolean).join('\n');
     }
@@ -1270,8 +1262,8 @@
         );
       } else {
         container.innerHTML =
-          '<div class="cal-week-list">' +
-          dayEvents.map(function(day) { return renderDayRow(day, bounds.today); }).join('\n') +
+          '<div class="cal-week-grid">' +
+          dayEvents.map(function(day) { return renderDayColumn(day, bounds.today); }).join('\n') +
           '</div>';
       }
     }
