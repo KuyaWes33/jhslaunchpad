@@ -266,6 +266,87 @@
     }
     .doc-card:hover .doc-arrow { transform: translateX(3px); }
 
+    /* ── PTC FORMS DROPDOWN ── */
+    .ptc-wrap { position: relative; max-width: 440px; }
+    .ptc-toggle {
+      width: 100%;
+      display: flex; align-items: center; gap: 14px;
+      padding: 18px 22px;
+      background: var(--surface);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      cursor: pointer; transition: var(--transition);
+      font-family: var(--font-sans); text-align: left;
+    }
+    .ptc-toggle:hover {
+      border-color: var(--green-200);
+      box-shadow: var(--shadow-md), 0 0 0 3px rgba(28,122,66,0.07);
+    }
+    .ptc-toggle:focus-visible { outline: 2px solid var(--green-600); outline-offset: 2px; }
+    .ptc-toggle-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      border-radius: var(--radius-sm);
+      background: var(--green-50); border: 1px solid var(--green-100);
+      display: grid; place-items: center; transition: background 0.2s ease;
+    }
+    .ptc-toggle:hover .ptc-toggle-icon { background: var(--green-100); }
+    .ptc-toggle-icon svg {
+      width: 21px; height: 21px; stroke: var(--green-700); fill: none;
+      stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .ptc-toggle-text { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+    .ptc-toggle-title { font-size: 14px; font-weight: 600; color: var(--gray-800); line-height: 1.3; }
+    .ptc-toggle-sub { font-size: 11px; color: var(--gray-400); font-weight: 500; margin-top: 2px; }
+    .ptc-chevron {
+      width: 18px; height: 18px; flex-shrink: 0;
+      stroke: var(--green-700); fill: none;
+      stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+      transition: transform 0.25s var(--ease);
+    }
+    .ptc-wrap.open .ptc-chevron { transform: rotate(180deg); }
+
+    .ptc-menu {
+      position: absolute; top: calc(100% + 8px); left: 0; right: 0; z-index: 50;
+      background: var(--surface);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      padding: 6px;
+      opacity: 0; transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity 0.18s var(--ease), transform 0.18s var(--ease);
+    }
+    .ptc-wrap.open .ptc-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .ptc-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 14px; border-radius: var(--radius-sm);
+      color: var(--gray-800); transition: background 0.15s ease;
+    }
+    .ptc-item:hover { background: var(--green-50); }
+    .ptc-item-badge {
+      width: 30px; height: 30px; flex-shrink: 0;
+      border-radius: var(--radius-sm);
+      background: var(--green-900); color: #fff;
+      display: grid; place-items: center;
+      font-family: var(--font-serif); font-size: 15px; font-weight: 700;
+    }
+    .ptc-item-label { flex: 1; font-size: 13.5px; font-weight: 600; }
+    .ptc-item-arrow {
+      width: 15px; height: 15px; stroke: var(--gray-400); fill: none;
+      stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+      transition: transform 0.2s var(--ease), stroke 0.2s ease;
+    }
+    .ptc-item:hover .ptc-item-arrow { transform: translateX(3px); stroke: var(--green-700); }
+    /* A section whose PTC link hasn't been added yet */
+    .ptc-item.is-pending { cursor: default; }
+    .ptc-item.is-pending:hover { background: var(--gray-100); }
+    .ptc-item.is-pending .ptc-item-badge { background: var(--gray-400); }
+    .ptc-item-soon {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+      color: var(--gray-400); text-transform: uppercase;
+    }
+
     /* ── CONTACT BANNER ── */
     .contact-banner {
       max-width: 1120px; margin: 0 auto 60px; padding: 0 28px;
@@ -482,6 +563,49 @@
       </div>
     </section>
 
+    <!-- ── PTC FORMS (choose your section) ── -->
+    <section class="section" aria-labelledby="ptc-heading" style="padding-top: 0;">
+      <div class="section-header">
+        <p class="section-eyebrow">Parent-Teacher Conference</p>
+        <h2 class="section-title" id="ptc-heading"><span>PTC Forms</span></h2>
+      </div>
+      <div class="ptc-wrap" id="ptc-wrap">
+        <button type="button" class="ptc-toggle" id="ptc-toggle"
+                aria-haspopup="true" aria-expanded="false" aria-controls="ptc-menu">
+          <span class="ptc-toggle-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </span>
+          <span class="ptc-toggle-text">
+            <span class="ptc-toggle-title">Select your section</span>
+            <span class="ptc-toggle-sub">Choose a section to open its PTC Form</span>
+          </span>
+          <svg class="ptc-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="ptc-menu" id="ptc-menu" role="menu" aria-label="PTC Form sections">
+          <a class="ptc-item" role="menuitem" data-link="ptcSectionA" href="#" target="_blank" rel="noopener noreferrer" aria-label="Nazareth A PTC Form — opens in new tab">
+            <span class="ptc-item-badge" aria-hidden="true">A</span>
+            <span class="ptc-item-label">Nazareth A</span>
+            <svg class="ptc-item-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a class="ptc-item" role="menuitem" data-link="ptcSectionB" href="#" target="_blank" rel="noopener noreferrer" aria-label="Nazareth B PTC Form — opens in new tab">
+            <span class="ptc-item-badge" aria-hidden="true">B</span>
+            <span class="ptc-item-label">Nazareth B</span>
+            <svg class="ptc-item-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a class="ptc-item" role="menuitem" data-link="ptcSectionC" href="#" target="_blank" rel="noopener noreferrer" aria-label="Nazareth C PTC Form — opens in new tab">
+            <span class="ptc-item-badge" aria-hidden="true">C</span>
+            <span class="ptc-item-label">Nazareth C</span>
+            <svg class="ptc-item-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a class="ptc-item" role="menuitem" data-link="ptcSectionD" href="#" target="_blank" rel="noopener noreferrer" aria-label="Nazareth D PTC Form — opens in new tab">
+            <span class="ptc-item-badge" aria-hidden="true">D</span>
+            <span class="ptc-item-label">Nazareth D</span>
+            <svg class="ptc-item-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- ── IT CONTACT BANNER ── -->
     <div class="contact-banner">
       <div class="contact-inner" role="complementary" aria-label="IT Assistance">
@@ -534,12 +658,54 @@
       weeklySummary: "https://docs.google.com/spreadsheets/d/1TP0xVJITogPxrs7zBLptzFhf3MVdc58TlpzZFFIsn-M/edit?usp=drive_link",
       conductGrades: "https://docs.google.com/spreadsheets/d/11CCczRVJ_NX8WgRtZxk3sY2oxR7MXnPM0IjaAHBOuzo/edit?gid=776647783#gid=776647783",
       midQuarterReports: "https://docs.google.com/spreadsheets/d/1Uy8CjQ1sHdVaYYyrRq7Sy_mRm_ebnbB_qKUgqSURS8k/edit?usp=drive_link",
+
+      // ── PTC Forms — one link per section (A / B / C / D) ──────────────
+      // PASTE EACH SECTION'S PTC FORM LINK BETWEEN THE QUOTES BELOW.
+      // Leave any as "" until you have the URL — that section shows a
+      // "Soon" badge in the dropdown and stays un-clickable until filled.
+      ptcSectionA: "",   // <-- Nazareth A  PTC Form link
+      ptcSectionB: "",   // <-- Nazareth B  PTC Form link
+      ptcSectionC: "",   // <-- Nazareth C  PTC Form link
+      ptcSectionD: "",   // <-- Nazareth D  PTC Form link
     };
 
     document.querySelectorAll("[data-link]").forEach(el => {
       const key = el.dataset.link;
-      if (LINKS[key]) el.href = LINKS[key];
+      const url = LINKS[key];
+      if (url) {
+        el.href = url;
+      } else if (el.classList.contains("ptc-item")) {
+        // PTC section link not configured yet: disable + show a "Soon" badge.
+        el.setAttribute("href", "#");
+        el.setAttribute("aria-disabled", "true");
+        el.classList.add("is-pending");
+        el.addEventListener("click", e => e.preventDefault());
+        const arrow = el.querySelector(".ptc-item-arrow");
+        if (arrow) {
+          const soon = document.createElement("span");
+          soon.className = "ptc-item-soon";
+          soon.textContent = "Soon";
+          arrow.replaceWith(soon);
+        }
+      }
     });
+
+    /* ── PTC Forms dropdown: open / close / dismiss ── */
+    (function () {
+      const wrap   = document.getElementById("ptc-wrap");
+      const toggle = document.getElementById("ptc-toggle");
+      if (!wrap || !toggle) return;
+
+      const open  = () => { wrap.classList.add("open");    toggle.setAttribute("aria-expanded", "true");  };
+      const close = () => { wrap.classList.remove("open"); toggle.setAttribute("aria-expanded", "false"); };
+
+      toggle.addEventListener("click", e => {
+        e.stopPropagation();
+        wrap.classList.contains("open") ? close() : open();
+      });
+      document.addEventListener("click", e => { if (!wrap.contains(e.target)) close(); });
+      document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+    }());
   </script>
 
 </body>
