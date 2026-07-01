@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="JHS Launchpad — The official resource hub of the Junior High School Department, MGC New Life Christian Academy">
   <title>JHS Launchpad — MGCNLCA</title>
-  <link rel="icon" type="image/png" href="mgc-logo.png">
+  <link rel="icon" type="image/png" href="assets/mgc-logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -806,7 +806,7 @@
       // PASTE THE PRAYER BULLETIN LINK BELOW (between the quotes).
       // Leave it as "" until you have the URL — the card will show a
       // "Link coming soon" state and won't be clickable until it's filled.
-      prayerBulletin: "",
+      prayerBulletin: "https://www.canva.com/design/DAFn71XhUoM/_VXhiilbwDSsovJ0EJgDSg/view?utm_content=DAFn71XhUoM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb4ba3c87d4",
 
       nazareth: "nazareth.html",
       berea:    "berea.html",
@@ -884,7 +884,7 @@
     function baseMonday() {
       var today = phtToday();
       var dow   = today.getDay();
-      var delta = (dow === 0) ? -6 : (1 - dow); /* back to Monday */
+      var delta = -dow; /* back to Sunday */      
       var mon   = new Date(today); mon.setDate(today.getDate() + delta);
       return mon;
     }
